@@ -1,0 +1,104 @@
+---
+title: "Pivoting Tables"
+format: html
+editor: visual
+---
+
+```{r, message =FALSE, echo = FALSE}
+
+library(tidyverse)
+library(gridExtra)
+library(grid)
+library(png)
+library(downloader)
+library(grDevices)
+library(ggplot2)
+
+tuition_cost <- read_csv("C:/Users/ducat/Documents/UNCW_Grad_school/MIS 503 R for DataScience_Programming/module5/Mod5Assignment2/tuition_cost.csv")
+#tuition_cost
+```
+
+## Creating tidy data
+
+-   this is an exercise showcasing some of the skills I have learned thus far.
+
+```{r, message = FALSE, echo = FALSE}
+
+#, merge 4 col to 2, separate the tuition col to InState and OutState, change year to int
+
+Tuition <- pivot_longer(tuition_cost       # this will take 4 columns and merge into 1
+                        , c('2017','2018','2019','2020'),   # these are the 4 columns chosen
+                        names_to = 'Year',                    # this is the new name for the columns
+                        values_to = 'tuition') %>%           # and their values will be assigned to this column
+           separate(tuition,                              # then we are going to separate the elements in 'tuition' col
+              into=c("InState","OutState"),          # those elements will be separated by '/' into 'InState' and 'OutState'
+              sep='/',convert=TRUE) 
+#Tuition              
+Tuition$Year <- as.integer(Tuition$Year)
+
+```
+
+## North Carolina Schools
+
+```{r echo= FALSE, message = FALSE}
+
+# , filtering down the Tuition to Nc instate 4 year school and plot it, then a unc sys and plot
+
+Public <- Tuition %>% 
+  filter(state_code == "NC" & type == "Public" & degree_length == "4 Year" )   #filter for NC,Public,4 year schools
+
+ggplot(Public, aes( Year, InState,color = name))+
+  geom_point()+
+  labs(title = "In-StateTuition for North Carolina Schools", x = "Year", y = "Cost in $")->p1
+
+#ggplot(Public, aes(Year,InState,fill = name))+    # just to see if I can
+ # geom_col()
+
+UNC <- filter(Public,grepl("University of North Carolina",name))  # grpl searchs for the "" in the "name" col in DF Public
+
+ggplot(UNC, aes(Year,InState, color = name))+
+  geom_point()+
+  labs(title = "In-State Tuition for UNC Schools", x = "Year", y = "Cost in $")+
+  theme(legend.position = "bottom", legend.title = element_blank())+   # legend on the bottom
+  guides(color = guide_legend(nrow = 4))->p2   # }
+
+
+grid.arrange(p1, ncol = 1)
+grid.arrange(p2, ncol = 1)
+
+```
+
+## Additional Universities
+
+```{r ,echo= FALSE, message= FALSE}
+
+CO <- Tuition %>% 
+  select(everything(),-InState) %>% 
+  filter(state_code == "CO" & type == "Public" & degree_length == "4 Year")
+  
+SC <- Tuition %>% 
+  select(everything(),-OutState) %>% 
+  filter(state_code == "SC" & type == "Public" & degree_length == "2 Year")
+  
+
+ggplot(CO, aes(Year, OutState, color = name))+
+  geom_point()+
+  labs(title ="Colorado 4Year Public School, OutState Tuition", x= "Year", y = "Cost in $")+
+  theme(legend.position = "right", 
+        legend.title = element_blank() # +  #legends on the bottom with not legend title
+  # guides(color = guide_legend(nrow = 4))   # This makes 4 rows of Universities
+        )->p3
+
+ggplot(SC,aes(Year,InState, color = name))+
+  geom_point()+
+  labs(title = "S.Carolina 2Year Public School, InState Tuition", x = "Year", y = "Cost in $")+
+  theme(legend.position = "right", 
+        legend.title = element_blank(),
+        legend.text = element_text(size = 8)
+        #legend.text = element_text(angle = 0,vjust=0, hjust=0)  # this will move the legend text up, down, and angle it
+        )->p4
+
+grid.arrange(p3, ncol = 1)
+grid.arrange(p4, ncol = 1)
+
+```
