@@ -1,0 +1,335 @@
+---
+title: "Data Analysis With RMD"
+format: html
+editor: visual
+---
+
+I begin by doing an analysis on the various regions' real estate and rental markets. I will look at the ranges the various markets go through over a prescribed period of time. Graphical representations will be created in order to make a more in-depth analysis. I had to drill down into the data further to make better observations when some of the data appeared to be incorrect.
+
+These are some [examples](https://github.com/Ducati013/KevinF.github.io/blob/main/Zillow%20Home%20Value%20Analysis.rmd) for a few analyses that were conducted on the [Zillow ZHVI](https://www.zillow.com/research/data/) data with R studio.
+
+```{r echo = FALSE, message = FALSE}
+
+library(tidyverse)
+#library(stringr)
+library(gridExtra)
+library(grid)
+library(png)
+library(downloader)
+library(grDevices)
+library(ggplot2)
+
+SingleFamilyResidenceSales <- read_csv("SingleFamilyResidenceSales.csv")
+SingleFamilyResidenceRental <- read_csv("SingleFamilyResidenceRental.csv")
+
+names(SingleFamilyResidenceSales) <- SingleFamilyResidenceSales %>% 
+    names() %>% 
+    str_replace("-05", "") #find("this","replaceWithThis")
+
+names(SingleFamilyResidenceRental) <- gsub(pattern = "\\-..", replacement = "", x = names(SingleFamilyResidenceRental)) 
+                        #get rid of the stuff after the"-" in Year 
+#-------------------------------------En
+```
+
+# Wake County Home Sales
+
+```{r echo = FALSE, message = FALSE}
+
+#--------------------------------------Wake County Sales Eval--------------------------------------------------------------------|
+
+WakeCountySales <- SingleFamilyResidenceSales %>% 
+   filter(State %in% "NC" & CountyName %in% "Wake County") %>% #filter for all NC & Wake Co elements
+  select(c(2,3,4,5,seq(from = 8, to = 277, by = 12))) %>%  # select # then, the seq from 8~277 by 12)
+  pivot_longer(cols =!c(1,2,3,4), # pivot all the columns but 1:4 to yr, and val to  ....
+                       names_to = 'Year',
+                       values_to = ('ZHVI')) #%>% 
+          #rename(City = RegionName)
+
+WakeCountySales$Year.ordered <- factor(WakeCountySales$Year,unique(WakeCountySales$Year,level = WakeCountySales$Year))# Keeps ggplot from reorganizing points
+#--------------------------------------End--------------------------------------------------------------------|
+
+#--------------------------------------Wake Co. Point plot--------------------------------------------------------------------|
+
+ggplot(WakeCountySales, aes(Year, ZHVI,color = RegionName,fct_reorder(x = Years)))+
+  geom_point() +
+  labs(title = "Wake County Home Sales")+
+  scale_y_continuous(name = "Home Values (in$)", labels = scales::comma)+
+  theme(strip.background = element_rect( fill = "gray"),
+        plot.title= element_text(size=18, color="blue", face="bold", family = "serif"),
+        axis.text.x = element_text(angle = 90,vjust = 0.5),
+        axis.title = element_text(color = "blue"),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        legend.background= element_rect(fill= "gray"),
+        panel.grid.major.y= element_line(color = "lightsalmon", size = 1, linetype = "dotted"),) ->p1
+
+
+
+#---------------------------Most Expensive City Eval--------------------------------------------------------------------|
+
+NewHillSales <- SingleFamilyResidenceSales %>% 
+   filter(State %in% "NC" & CountyName %in% "Wake County" & 
+            RegionName %in% c("New Hill", "Cary", "Apex","Morrisville","Rolesville","Wake Forest")) %>% #filter for all NC & Wake Co elements
+  select(c(2,3,4,5,seq(from = 256, to = 277))) %>%  # select # then, the seq from 8~277 by 12)
+  pivot_longer(cols =!c(1,2,3,4), # pivot all the columns but 1:4 to yr, and val to  ....
+                       names_to = 'Year',
+                       values_to = ('ZHVI')) #%>% 
+          #rename(City = RegionName)
+#--------------------------------------End--------------------------------------------------------------------|
+
+#--------------------------Most Expensive City Point Plot-----------------------------------------------------------|
+NewHillSales$Year <- factor(NewHillSales$Year,unique(NewHillSales$Year,level = NewHillSales$Year))
+ggplot(NewHillSales, aes(Year, ZHVI, shape = RegionName, color = RegionName,fct_reorder(x = Years)))+ geom_point() +
+  labs(title = "Most Expensive City in Wake Co.")+
+  theme(axis.text.x = element_text(angle = 90,vjust = 0.5),
+        plot.title= element_text(size=18, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.major.y= element_line(color = "lightsalmon", size = 1, linetype = "dotted"),) +
+  scale_y_continuous(name = "Home Values (in$)", labels = scales::comma) ->p2 
+
+#--------------------Least Expensive Eval--------------------------------------------------------------------|
+LeastExpensiveSales<- SingleFamilyResidenceSales %>% 
+   filter(State %in% "NC" & CountyName %in% "Wake County" & 
+            RegionName %in% c("Zebulon", "Wendell", "Willow Springs")) %>% #filter for all NC & Wake Co elements
+  select(c(2,3,4,5,seq(from = 256, to = 277))) %>%  # select # then, the seq from 8~277 by 12)
+  pivot_longer(cols =!c(1,2,3,4), # pivot all the columns but 1:4 to yr, and val to  ....
+                       names_to = 'Year',
+                       values_to = ('ZHVI')) #%>% 
+          #rename(City = RegionName)
+LeastExpensiveSales$Year <- factor(LeastExpensiveSales$Year,unique(LeastExpensiveSales$Year,level = LeastExpensiveSales$Year))
+#--------------------------------------End--------------------------------------------------------------------|
+
+#--------------------Least Expensive  Point Plot---------------------------------------------------------------|
+ggplot(LeastExpensiveSales, aes(Year, ZHVI, shape = RegionName, color = RegionName,fct_reorder(x = Years)))+ geom_point()+
+  labs(title = "Least Expensive City in Wake Co.")+
+  theme(axis.text.x = element_text(angle = 90,vjust = 0.5),
+        plot.title= element_text(size=18, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.major.y= element_line(color = "lightsalmon", size = 1, linetype = "dotted"),) +
+  scale_y_continuous(name = "Home Values (in$)", labels = scales::comma) -> p3
+#--------------------------------------End-----------------------------------------------------------------------------------------| 
+
+grid.arrange(p1, ncol = 1)
+
+grid.arrange(p2, p3, ncol=1)
+
+```
+
+a\. What have been the overall trends in Wake County Home Values?
+
+ - **Overall the trends have been positive.**
+
+b\. There were dips in home values in the past 20 years. What years did these occur?
+
+ - **Yes there were two dips in the values the first was 1997 through 1998 and the second was from 2009 through 2012.**
+
+c\. Based on the analysis, where would be the least expensive area to purchase home? Most expensive area?
+
+ - **Zebulon** was the **least expensive** area.
+
+ - **New Hill** was the **most expensive** in 2018.
+
+d\. Are any area home values trending down? Is there one area that stands out compared to others?
+
+ - **I do not see any regions that are declining in value within Wake County.**
+
+ - If I investigate further I do a small decrease in **New Hill** in October 2018.
+
+ - New Hill stands out compared to the regions and it appears to be an anomaly based on historical data.
+
+ - New Hill will need further investigation with more recent data.
+
+ - Upon Further investigation New Hill is indeed accurate with the current data provided.
+
+# NC Rental Market
+
+```{r echo = FALSE, message = FALSE}
+
+#SingleFamilyResidenceRental <- read_csv("SingleFamilyResidenceRental.csv")
+#-------------------------------------NC Regional Eval--------------------------------------------------------------------|
+
+NcRegionRental <- SingleFamilyResidenceRental %>% 
+  select(c(2,3,seq(from = 7, to = 102, by = 12))) %>%  # select # then, the seq from 7~102 by 12)      
+  filter(State %in% "NC" & 
+          RegionName %in% c("Asheville", "Charlotte","Durham","Fayetteville","Raleigh","Wilmington")) %>% 
+  pivot_longer(cols =!c(1,2), # pivot all the columns but 1:4 to yr, and val to  ....
+                       names_to = 'Year',
+                       values_to = ('ZHVI')) %>% 
+  arrange(ZHVI) %>% 
+  rename(City = RegionName) #rename(new = old)
+
+#-------------------------------------NC Regional Eval Plot--------------------------------------------------------------------|
+
+#NcRegionRental$Year <- factor(NcRegionRental$Year,level = NcRegionRental$Year)
+ggplot(NcRegionRental, aes(Year, ZHVI, color =City))+ geom_point()+
+  labs(title = "Rental Costs in NC Cities")+
+  theme(axis.text.x = element_text(angle = 90,vjust = 0.5),
+        plot.title= element_text(size=24, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.major.y= element_line(color = "lightsalmon", size = 1, linetype = "dashed"),
+        panel.grid.minor.y= element_line(color = "sienna", size = 1, linetype = "solid")) +
+  scale_y_continuous(name = "Home Values (in$)", labels = scales::comma) ->p4
+
+ggplot(NcRegionRental, aes(Year, ZHVI,fill = City)) + geom_col(color = "black")+
+  labs(title = "Rental Costs in NC Cities")+
+  theme(axis.text.x = element_text(angle = 90,vjust = 0.5),
+        plot.title= element_text(size=24, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray")) +
+  scale_y_continuous(name = "Home Values (in$)", labels = scales::comma) -> p5 # this adds commas to the scale labels
+#-------------------------------------End--------------------------------------------------------------------|          
+grid.arrange(p4, p5, ncol=1)
+
+```
+
+a\. What has been the overall trend in the rental market around the state? Are there any cities that have not followed this trend?
+
+ - **The overall trend has been an increase in the rental costs in the evaluated cities.**
+
+ - **Fayetteville** did not follow the trend, the retal rate dropped in 2011 and again in 2016 before returning to a more normal level in 2017.
+
+b\. Where is the most expensive city to rent in? Least expensive?
+
+ - Currently the **most expensive** city to rent in is **Asheville** while the **least expensive** is **Fayetteville.**
+
+c\. You are trying decide between Wilmington and Asheville. Which market has the lowest rent?
+
+ - **Wilmington** has lower rent than Asheville in 2017.
+
+```{r, warning = FALSE, echo = FALSE, message = FALSE}
+#, Asheville, Charlotte-Concord-Gastonia,Raleigh, Wilmington
+#SingleFamilyResidenceSales <- read_csv("SingleFamilyResidenceSales.csv")
+#--------------------------------------NC Homes Sales--------------------------------------------------------------------|
+NCHomeSales <- SingleFamilyResidenceSales %>% 
+  select(c(3,4,seq(8,277,12))) %>% 
+  filter(State %in% "NC" & Metro %in% c("Asheville","Charlotte-Concord-Gastonia","Raleigh", "Wilmington")) %>% 
+  pivot_longer(cols = c(3:25), # select col 3 thru 25
+  names_to = "Year", values_to = "ZHVI") %>% #names=colNames ,Values_to=newColName
+  group_by(Metro) #by cityAreaName
+
+#--------------------------------------NC Homes Sales Plots--------------------------------------------------------------------|
+ggplot(NCHomeSales, aes(Metro, ZHVI ))+ geom_violin()+geom_boxplot(width = .1)+ #coord_flip() 
+stat_summary(fun = "median", geom = "crossbar", color = "green")+
+  stat_summary(fun = "mean", geom = "point", color = "orange")+
+  scale_y_continuous( labels = scales::comma)+ # this adds commas to the scale labels
+  labs(title = "NC Home Sales")+
+  theme(plot.title= element_text(size=24, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.minor.y= element_line(color = "lightsalmon")) ->p6
+
+ggplot(NCHomeSales, aes(Metro, ZHVI ))+geom_violin() + stat_boxplot(geom = 'errorbar') + geom_boxplot()+ coord_flip()+
+  stat_summary(fun = "median", geom = "crossbar", color = "green")+
+  labs(title = "NC Home Sales")+
+  theme(plot.title= element_text(size=24, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.minor.x = element_line(color = "lightsalmon"),
+        panel.grid.minor.y = element_line(color = "cornflowerblue")) ->p7# it will not give the the minors
+#--------------------------------------end-----------------------------------------------|
+grid.arrange(p6, p7, ncol=1)
+```
+
+a\. According to the results, which market has the lowest median price (represented as horizontal bar in
+
+box plot)?
+
+ - **Charlotte-Concord-Gastonia** had the lowest median price.
+
+b\. The violin plot will show density meaning the wider the plot is, the more observations occur within
+
+that area. Which market has the most density around the median value of homes?
+
+ - **Charlotte-Concord-Gastonia** once again has the largest density around the median value in that metro area.
+
+# Relocation Home Value Comparison
+
+```{r ,warning = FALSE, message =FALSE, echo= FALSE}
+
+#--------------------------------------National Home Sales Eval-------------------------------------------------------------------|
+
+NationalHomeSales <- SingleFamilyResidenceSales %>% 
+  select(c(2,3,4,seq(8,277,12))) %>% 
+  filter(RegionName %in% c("Chicago","Denver","Houston","New York") & State %in% c("IL","CO","TX","NY")) %>% 
+  pivot_longer(cols = c(4:26), names_to = "Year", values_to = "ZHVI")
+
+
+ggplot(NationalHomeSales, aes(Year, ZHVI,color = RegionName))+
+  geom_point()+
+  facet_wrap(~Metro)+  # this creates 4 plots,one for each city to compare :)
+  labs(title = "City Home Value Comparison")+
+  theme(legend.position = "none", axis.text.x = element_text(angle = 90, vjust=0.5, size=5),
+        plot.title= element_text(size=18, color="blue", face="bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", colour="black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.major.y= element_line(color = "lightsalmon"),)+
+  scale_y_continuous(name="Home Values (in $)", labels = scales::comma)+
+  geom_vline(xintercept = c(17,23), linetype = "dashed")->p8
+#--------------------------------------end-----------------------------------------------|
+
+#--------------------------------------more in depth eval for past 5 years-----------------------------------------------
+Past5YearsNationalHomeSales <- SingleFamilyResidenceSales %>% 
+  select(c(2,3,4,seq(184,277,6))) %>% 
+  filter(RegionName %in% c("Chicago","Denver","Houston","New York") & State %in% c("IL","CO","TX","NY")) %>% 
+  pivot_longer(cols = c(4:19), names_to = "Year", values_to = "ZHVI") %>% 
+  rename(City = RegionName)
+
+
+ggplot(Past5YearsNationalHomeSales, aes(Year, ZHVI,shape = City,color = City))+
+  geom_point()+
+  #facet_wrap(~Metro)+  # this creates 4 plots,one for each city to compare :)
+  labs(title = "City Home Value Comparison")+
+  theme(axis.text.x = element_text(family = "mono", colour = "black", face = "bold", angle = 90, vjust=0.5, size=8),
+        plot.title = element_text(size = 18, color = "blue", face = "bold", family = "serif"),
+        axis.title = element_text(color = "blue", size = 12),
+        axis.text = element_text(family = "mono", color = "black", face = "bold"),
+        plot.background = element_rect(fill = "gray"),
+        panel.grid.major.y= element_line(color = "lightsalmon"),)+
+  scale_y_continuous(name="Home Values (in $)", labels = scales::comma)+
+  geom_vline(xintercept = c(3,5,16), linetype = "dashed")->p9
+
+  
+
+
+
+Chicago= (208500-151700)/(2018-2013) #(y2 - y1)/(x2 - x1) = m
+Houston= (185800-123200) /(2018-2013)
+# Chicago<Houston
+Change <- if(Chicago < Houston){ 
+  print("Chicago") 
+} else {
+  print("Houston")
+}
+
+grid.arrange(p8, p9, ncol=1)
+```
+
+a. Based on your analysis, which city's housing is most affordable? Least affordable?
+
+ - **Houston-The Woodlands-Sugar Land** appears to be the most affordable, and **New York-Neward-Jersey City** are the least affordable.
+
+b. Which cities saw the largest change in prices over the past 5 years? Which city has remained more
+
+consistent (i.e., no huge swings up or down in home values)?
+
+ - During the past 5 years **New York-Neward-Jersey City**, and **Denver-Aurora-Lakewood** saw the largest change in prices.
+
+ - **Houston-The Woodlands-Sugar Land** has the most consistent housing market since 1996, and **`r Change`** has had the most consistent housing market during over the past 5 years.
+
+c. During the market downturn in 2012, which cities were most impacted? Which cities have
+
+recovered?
+
+ - **New York-Newark-Jersey City** and **Chicago-Naperville-Elgin** were the most effected by the 2012 downturn.
+
+ - All the cities have recovered since the 2012 market downturn.
