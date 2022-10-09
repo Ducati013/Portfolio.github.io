@@ -3953,20 +3953,52 @@ input, select, textarea {
 					box-shadow: inset 0 -1px 0 0 #003366, 0 1px 0 0 #003366;
 				}
 			.wrapper.spotlight.style7 {
-				background-color: #FFD600;
+				background-color: 006666;
 			}
 
-				.wrapper.spotlight.style6:before, .wrapper.spotlight.style6:after {
+				.wrapper.spotlight.style7:before, .wrapper.spotlight.style5:after {
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23324072%3B' /%3E%3C/svg%3E");
+				}
+
+				.wrapper.spotlight.style7:before {
+					box-shadow: inset 0 -1px 0 0 #006666, 0 1px 0 0 #006666;
+				}
+
+				.wrapper.spotlight.style7:after {
+					box-shadow: inset 0 -1px 0 0 #006666, 0 1px 0 0 #006666;
+				}
+
+			.wrapper.spotlight.style8 {
+				background-color: #003366;
+			}
+
+				.wrapper.spotlight.style8:before, .wrapper.spotlight.style6:after {
 					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%232d3a69%3B' /%3E%3C/svg%3E");
 				}
 
-				.wrapper.spotlight.style6:before {
+				.wrapper.spotlight.style8:before {
+					box-shadow: inset 0 -1px 0 0 #003366, 0 1px 0 0 #003366;
+				}
+
+				.wrapper.spotlight.style8:after {
+					box-shadow: inset 0 -1px 0 0 #003366, 0 1px 0 0 #003366;
+				}
+			.wrapper.spotlight.style9 {
+				background-color: #FFD600;
+			}
+
+				.wrapper.spotlight.style9:before, .wrapper.spotlight.style6:after {
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%232d3a69%3B' /%3E%3C/svg%3E");
+				}
+
+				.wrapper.spotlight.style9:before {
 					box-shadow: inset 0 -1px 0 0 #FFD600, 0 1px 0 0 #FFD600;
 				}
 
-				.wrapper.spotlight.style6:after {
+				.wrapper.spotlight.style9:after {
 					box-shadow: inset 0 -1px 0 0 #FFD600, 0 1px 0 0 #FFD600;
 				}
+				
 		@media screen and (max-width: 980px) {
 
 			.wrapper {
