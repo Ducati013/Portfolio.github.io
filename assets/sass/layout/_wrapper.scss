@@ -160,7 +160,7 @@
 
 		&.spotlight {
 			@include wrapper-edges-color(_palette(accent));
-			background-color: _palette(accent);
+			background-color: Tomato;    //_palette(accent);
 
 			.inner {
 				@include vendor('display', 'flex');
