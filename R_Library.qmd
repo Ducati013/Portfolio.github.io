@@ -1,0 +1,204 @@
+---
+title: "R Markdown Library"
+author: "Kevin Foley"
+format: html
+editor: visual
+---
+
+```{=html}
+<!--
+2022/7/13 created 
+This was the creation of the R markdown Library
+I will try to put everything on here I come across in a useful manner
+-->
+```
+help(package="datasets") or ?commandName to find help
+
+# R info... vectors and atomic vectors [*R markDown Basics*](https://rmarkdown.rstudio.com/authoring_basics.html)
+
+vector \<- stores item `(vector is the simplest data structure in R)` [TypesOfVectors](https://www.geeksforgeeks.org/types-of-vectors-in-r-programming/#:~:text=Atomic%20vectors%20are%20probably%20the,also%20different%20from%20a%20list.)  \
+atomicVector \<- c("this", "stores", "lists", "of", "the", "same", "data", "type")\
+[AtomicVectorInformation](https://www.geeksforgeeks.org/types-of-vectors-in-r-programming/#:~:text=Atomic%20vectors%20are%20probably%20the,also%20different%20from%20a%20list.) (can contain Type(), length(), attributes())\
+atmomicVector2 \<- c(1,2,3,4,5,6,7,8,9,0)\
+**to change the element in a given spot in an atomicVector:**\
+AtomicVector\[3\] \<-9 <!--- this 9 is the new element to put in the index # 3 slot, can also be done with several index #s --->  typeof(vector) <!-- responds with what type of (contents) the variable is --->\
+**To print out a variable, data frame**\
+Write(variable_dataframe_ect, "destinationName.txt")\
+dev.print(pdf, "destination.pdf")
+
+## to search for element in vector
+
+"element" %in% vector
+
+## R dataFrames
+
+<!-- columns must contain likes -->
+
+df \<- data.frame(firstColumn = c("one", "two", "Three"), secondColumn = c(1,2,3), thirdColumn = c("Some", "Thing", "Else")) view(df)
+
+### to manipulate within the dataFrame:
+
+df\[3,3\] ***this will display or allow you to manipulate the dataFrame\[row, column\]***\
+df\[3,2\] \<- "newValueOfSameType"
+
+### to manipulate the data in a plot:
+
+qplot (dataFrameName$desiredRow,dataFrameName$desiredColumn)
+
+# R Markdown Library
+
+```{r global Library and .csv loading}
+#library(something)
+#Example <- read.csv("Example.csv")
+```
+
+### Global library and .csv loading
+
+beaver1 \<- datasets :: beaver1\
+library(tidyverse)\
+library(readr)\
+library(dplyr) [dplyr Reference guide](https://www.geeksforgeeks.org/dplyr-package-in-r-programming/?ref=lbp)\
+Marketing \<- read.csv("Marketing.csv")
+
+## data sets
+
+[r-dir](https://rmarkdown.rstudio.com/authoring_basics.html) [kaggle](https://www.kaggle.com/datasets) [data.gov](https://catalog.data.gov/dataset?res_format=CSV)
+
+### Functions
+
+[FunctionReferences](https://www.geeksforgeeks.org/functions-in-r-programming/?ref=lbp)\
+var = readline(prompt = "please enter a number:");\
+var \<- as.integer(var);\
+print(var)
+
+# script manipulation and manual line breaks
+
+    *italic*, _italic_, **bold**, __bold__, superscript^2^, ~~strikethrough~~
+
+*italic*, *italic*, **bold**, **bold**, superscript^2^, ~~strikethrough~~\
+Comma at the end gives one spaces, while a period at the end. gives one space,\
+but two blank spaces after a line begins a new line\
+`\`does also
+
+## header 
+
+    ## header\
+    ### header\
+    #### header\
+
+```{r  bulleted list}
+
+```
+
+# lists
+
+-   list_item1
+
+-   list_item2
+
+    -   item2a
+    -   item2b
+
+```{r ordered lists}
+
+```
+
+1.  list1
+
+2.  list2
+
+    -   item2a
+    -   item2b
+
+    ```{r inline R code}
+
+    ```
+
+    # adding code inline and display equations
+
+We go forth and \times`multiply`.\
+This is how to `r beaver1[20,3]` have inline code to access the element in the 20th row and 3rd column.
+
+$$equation$$ $equation$
+
+# operators
+
+$2\times2$\
+$2\div2$
+
+```{r Links}
+
+```
+
+# links
+
+[List of free data sets](https://r-dir.com/reference/datasets.html) \
+[Github](www.github.com)\
+[StacksOverflow](www.stacksoverflow.com)\
+[Hand-on Programming with R](https://rstudio-education.github.io/hopr/)\
+[R CookBook](https://rc2e.com/)\
+[R Markdown The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)\
+[Python Data Science](https://jakevdp.github.io/PythonDataScienceHandbook/)\
+
+# inbed images 
+
+`![This guy loves it!](https://static.tvtropes.org/pmwiki/pub/images/1e6cbdda5edce1e775234dee3c912a93.jpg)`\
+![This guy loves it!](https://static.tvtropes.org/pmwiki/pub/images/1e6cbdda5edce1e775234dee3c912a93.jpg)
+
+# blockquotes  <!--- block the quote in html but indents in Doc--->
+
+`> Beginning    >End`
+
+> Beginning  End\
+
+# plain code blocks
+
+    Displayed but not run
+
+```{=html}
+<!---  Not working for some reason
+# at the bottom of the doc
+
+[id]: https://static.tvtropes.org/pmwiki/pub/images/1e6cbdda5edce1e775234dee3c912a93.jpg "Title"
+[id]: http://example.com/ "Title"
+--->
+```
+# Graphs with R markdown
+
+```{r tidyverse plot for sales by month, echo = TRUE}
+#==Question2
+suppressPackageStartupMessages(library(tidyverse))
+sales <- c(50,150,200,100,300,250)
+month <- c(1,2,3,4,5,6)
+qplot(month,sales)
+```
+
+## do some more manipulations:
+
+df1 \<- data.frame(sales = c(50,150,200,100,300,250), month = c(1,2,3,4,5,6))\
+What were the highest sales? `max(df$sales)`, " and in which month did those sales occur:", `which(max(df$sales))`.
+
+**finding the stores that are 22 years old, filtering out duplicates and showing the storeID for the stores that are 22 years old**\
+
+```{r filtering down to a column and removing duplicates in that column}
+
+Marketing <- read.csv("Marketing.csv")
+Marketing2 <- Marketing[ which(Marketing$AgeOfStore == 22),]
+Marketing2 <- Marketing2[!duplicated(Marketing2$LocationID),]
+print(paste("The Stores that are 22 years old are:", Marketing2[1:3,3]))      
+
+```
+
+<!---this next manipulation effectively manipulates the x and y axis titles, removes the legend, and adds color. --->
+
+```{r Working with Data Frames}
+WorkingWithDataFrames <- data.frame(month = c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"),
+  sales = c(150.25, 258.54, 268.55, 122.52, 987, 458.82, 667.23, 845.54, 586.78, 888.58, 756.12, 456.84))
+
+WorkingWithDataFrames$month <- factor(WorkingWithDataFrames$month,level = month.abb)  
+
+qplot(WorkingWithDataFrames$month, WorkingWithDataFrames$sales, color = WorkingWithDataFrames$sales, xlab = "Months", ylab = "Sales") + theme(legend.position = "none")   
+
+print(paste("Which month had the most sales?",which.max(WorkingWithDataFrames$sales)," and the sales were:",max(WorkingWithDataFrames$sales), "Which month had the least sales?",which.min(WorkingWithDataFrames$sales),"and the sales were:",min(WorkingWithDataFrames$sales)))
+
+```
