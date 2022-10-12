@@ -1,6 +1,6 @@
 ---
 title: "R Markdown Library"
-author: "Kevin Foley"
+
 format: html
 editor: visual
 ---
