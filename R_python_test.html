@@ -137,7 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="evaluating-with-r" class="level1">
 <h1>Evaluating with R:</h1>
-<p>In this section I am evaluating the data to see what the content for the Zillow home value index(ZHVI) is. We will see what the names of the columns and a general summary for the columns. We can do a lot more with R but this task is more about what we can do with python.</p>
+<p>In this section I am evaluating the data to see what the content for the Zillow home value index(ZHVI) is.<br>
+ We will see what the names of the columns and a general summary for the columns. <br>
+ We can do a lot more with R but this task is more about what we can do with python.
+ </p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Housing_Zillow,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -172,7 +175,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="python-section" class="level1">
 <h1>Python section:</h1>
-<p>The data.info() provides valuable insight quickly by providing the number of columns, the types of data in each column and the quantity of null values in each column. This data is used to expedite the cleaning process and speed things along rather than searching for items needing cleaning before beginning to analyze the data. The data.describe() provides us with statistical information that could be useful if we want to replace null values with a mean, median, or some other method.</p>
+<p>The data.info() provides valuable insight quickly by providing the number of columns, the types of data in each column and the quantity<br>
+ of null values in each column. This data is used to expedite the cleaning process and speed things along rather than searching for items<br>
+ needing cleaning before beginning to analyze the data. The data.describe() provides us with statistical information that could be useful <br>
+ if we want to replace null values with a mean, median, or some other method.
+ </p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>This is a count for how many Nulls are in each column: 
@@ -223,7 +230,11 @@ min     69390.000000
 max    909473.000000</code></pre>
 </div>
 </div>
-<p>This section will take the provided data and produce some graphs that should help decision makers make better decisions. While each graph is improving upon the upon the last these graphs are far from useful.</p>
+<p>
+ This section will take the provided data and produce some graphs that should help decision makers make better decisions.<br>
+ While each graph is improving upon the upon the last these graphs are far from useful.
+</p>
+ 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from plotnine import *   Needed to produce the ggplots</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ggplot(df, aes(<span class="st">"year"</span>, <span class="st">"mean_prices"</span>,color<span class="op">=</span><span class="st">"StateName"</span>))<span class="op">+</span> geom_point()<span class="op">+</span>labs(title <span class="op">=</span> <span class="st">"All the States in one BUSY graph"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
