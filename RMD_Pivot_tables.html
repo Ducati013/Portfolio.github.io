@@ -130,7 +130,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>This is an exercise showcasing some of the skills I have learned thus far.</li>
 </ul>
-<p>I will begin with reading the csv file into R and perform some information gathering from the data. I begin the investigation by finding there are significant number of columns that are date based. I will merge those date based columns into one column and their corresponding values and merge them into one column thus converting the data into a more useful format. The new name for the years column will be ‘Year’ and the corresponding values will be ‘tuition’. I will be using piping to make the code tidier.</p>
+<p>The evaluation begins with reading the csv file into R and performing some information gathering from the data. The investigation<br>
+  reveals there are significant number of columns that are date based that would be better suited when combined into one column. <br>
+  I will merge those date based columns into one column and their corresponding values and merge them into one column thus converting<br>
+  the data into a more useful format. The new name for the years column will be ‘Year’ and the corresponding values will be ‘tuition’.<br>
+  I will be using piping to make the code tidier.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#, merge 4 col to 2, separate the tuition col to InState and OutState, change year to int</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -147,7 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="north-carolina-schools" class="level2">
 <h2 class="anchored" data-anchor-id="north-carolina-schools">North Carolina Schools</h2>
-<p>This section will filter down all the observations to a North Carolina School with a 4 year degree path calculating tuition rate as in-state for this evaluation. As as secondary evaluation all the schools with University of North Carolina in the name will be evaluated. All of these evaluations will be plotted with the year on the x-axis and the tuition rate on the y-axis. I will add some titles to the evaluations and color the universities to make the graphs easier to evaluate.</p>
+<p>This section will filter down all the observations to a North Carolina School with a 4 year degree path calculating tuition rate as<br>
+  in-state for this evaluation. As as secondary evaluation all the schools with University of North Carolina in the name will be evaluated.<br>
+  All of these evaluations will be plotted with the year on the x-axis and the tuition rate on the y-axis. I will add some titles to the<br>
+  evaluations and color the universities to make the graphs easier to evaluate.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="RMD_Pivot_tables_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
@@ -159,7 +166,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="additional-universities-located-in-south-carolina-and-colorado" class="level2">
 <h2 class="anchored" data-anchor-id="additional-universities-located-in-south-carolina-and-colorado">Additional Universities located in South Carolina and Colorado:</h2>
-<p>The next section will begin with an evaluation for a public Colorado school with a 4 year degree path at an in-state rate for calculations. The next evaluation will be for a public South Carolina school with a 2 year program at an out-of-state tuition rate. I will add a title to the graphs with ‘year’ for the x-axis and ‘tuition-rates’ for the y-axis for both graphs.</p>
+<p>The next section will begin with an evaluation for a public Colorado school with a 4 year degree path at an in-state rate for calculations.<br>
+  The next evaluation will be for a public South Carolina school with a 2 year program at an out-of-state tuition rate.<br>
+  I will add a title to the graphs with ‘year’ for the x-axis and ‘tuition-rates’ for the y-axis for both graphs.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="RMD_Pivot_tables_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
