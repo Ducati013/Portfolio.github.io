@@ -20,18 +20,20 @@ tuition_cost <- read_csv("C:/Users/ducat/Documents/UNCW_Grad_school/MIS 503 R fo
 
 ## Creating tidy data
 
--   this is an exercise showcasing some of the skills I have learned thus far.
+-   This is an exercise showcasing some of the skills I have learned thus far.
 
-```{r, message = FALSE, echo = FALSE}
+I will begin with reading the csv file into R and perform some information gathering from the data. I begin the investigation by finding there are significant number of columns that are date based. I will merge those date based columns into one column and their corresponding values and merge them into one column thus converting the data into a more useful format. The new name for the years column will be 'Year' and the corresponding values will be 'tuition'. I will be using piping to make the code tidier.
+
+```{r, message = FALSE, echo = TRUE}
 
 #, merge 4 col to 2, separate the tuition col to InState and OutState, change year to int
 
-Tuition <- pivot_longer(tuition_cost       # this will take 4 columns and merge into 1
-                        , c('2017','2018','2019','2020'),   # these are the 4 columns chosen
-                        names_to = 'Year',                    # this is the new name for the columns
+Tuition <- pivot_longer(tuition_cost                         # this will take 4 columns and merge into 1
+                        , c('2017','2018','2019','2020'),    # these are the 4 columns chosen
+                        names_to = 'Year',                   # this is the new name for the columns
                         values_to = 'tuition') %>%           # and their values will be assigned to this column
-           separate(tuition,                              # then we are going to separate the elements in 'tuition' col
-              into=c("InState","OutState"),          # those elements will be separated by '/' into 'InState' and 'OutState'
+           separate(tuition,                                 # then we are going to separate the elements in 'tuition' col
+              into=c("InState","OutState"),                  # those elements will be separated by '/' into 'InState' and 'OutState'
               sep='/',convert=TRUE) 
 #Tuition              
 Tuition$Year <- as.integer(Tuition$Year)
@@ -39,6 +41,8 @@ Tuition$Year <- as.integer(Tuition$Year)
 ```
 
 ## North Carolina Schools
+
+This section will filter down all the observations to a North Carolina School with a 4 year degree path calculating tuition rate as in-state for this evaluation. As as secondary evaluation all the schools with University of North Carolina in the name will be evaluated. All of these evaluations will be plotted with the year on the x-axis and the tuition rate on the y-axis. I will add some titles to the evaluations and color the universities to make the graphs easier to evaluate.
 
 ```{r echo= FALSE, message = FALSE}
 
@@ -68,7 +72,9 @@ grid.arrange(p2, ncol = 1)
 
 ```
 
-## Additional Universities
+## Additional Universities located in South Carolina and Colorado:
+
+The next section will begin with an evaluation for a public Colorado school with a 4 year degree path at an in-state rate for calculations. The next evaluation will be for a public South Carolina school with a 2 year program at an out-of-state tuition rate. I will add a title to the graphs with 'year' for the x-axis and 'tuition-rates' for the y-axis for both graphs.
 
 ```{r ,echo= FALSE, message= FALSE}
 
