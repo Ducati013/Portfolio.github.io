@@ -23,14 +23,6 @@ startTime <- Sys.time()
 >
 > ##### When did North Carolina suffer the worst housing price downturn in the past 20 years? This question is easily answered through the last graph.
 
-<html>
-
-<body style="background-color:#E7F9DF;">
-
-</body>
-
-</html>
-
 #### Read the file with R and assign to a variable.
 
 ```{r  echo=FALSE, message=FALSE}
