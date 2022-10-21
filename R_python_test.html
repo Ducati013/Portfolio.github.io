@@ -130,7 +130,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <blockquote class="blockquote">
-<p>This document is written in Rstudio with R and python being used in its creation. This task uses raw data from <a href="https://www.zillow.com/research/data/">Zillow’s Home Value Index(all homes-mid-tier)</a>. I begin by doing a few small evaluations with R and compare them to similar functions in python. Both languages perform very well and have nearly the same capabilities for business intelligence. I already provided several documents with R so the primary focus here is on python's capabilities. I produce several graphs with their content and attributes being refined with each new graph.</p>
+<p>This document is written in Rstudio with R and python being used in its creation. 
+  This task uses raw data from <a href="https://www.zillow.com/research/data/">Zillow’s Home Value Index(all homes-mid-tier)</a>.
+  I begin by doing a few small evaluations with R and compare them to similar functions in python. 
+  Both languages perform very well and have nearly the same capabilities for business intelligence. 
+  I already provided several documents with R so the primary focus here is on python's capabilities. 
+  I produce several graphs with their content and attributes being refined with each new graph.
+  </p>
+  <p><img src=R_python_test_images/unnamed-chunk-5-5.png" class="img-fluid" width="614"></p>
 <h4 id="ultimately-i-ask" class="anchored">Ultimately I ask:</h4>
 <h5 id="when-did-north-carolina-suffer-the-worst-housing-price-downturn-in-the-past-20-years-this-question-is-easily-answered-through-the-last-graph." class="anchored">When did North Carolina suffer the worst housing price downturn in the past 20 years? This question is easily answered through the last graph.</h5>
 </blockquote>
@@ -287,7 +294,7 @@ max    909473.000000</code></pre>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data for NC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_python_test_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="614"></p>
+<p><img src="R_python_test_images/unnamed-chunk-4-1.png" class="img-fluid" width="614"></p>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.loc[df[<span class="st">'StateName'</span>] <span class="op">==</span> <span class="st">"NC"</span>]  <span class="co"># this locates a value within a column and saves to new df</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -297,7 +304,7 @@ max    909473.000000</code></pre>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontweight<span class="op">=</span><span class="st">'bold'</span>, color<span class="op">=</span><span class="st">'blue'</span>, rotation<span class="op">=</span><span class="dv">37</span>)  <span class="co"># This adds a blue color to the x-axis labels and rotates the to 37 degrees</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.show()                                                 <span class="co"># this shows the plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_python_test_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
+<p><img src="R_python_test_images/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -329,7 +336,7 @@ max    909473.000000</code></pre>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#geom_vline(xintercept = "2008-04-30", linetype = "dashed"),</span></span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_python_test_files/figure-html/unnamed-chunk-7-5.png" class="img-fluid" width="614"></p>
+<p><img src=R_python_test_images/unnamed-chunk-5-5.png" class="img-fluid" width="614"></p>
 </div>
 </div>
 <div class="cell">
