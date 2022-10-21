@@ -1,0 +1,159 @@
+---
+title: "R and Python in Rstudio"
+format: html
+editor: visual
+---
+
+```{r echo=FALSE}
+startTime <- Sys.time()
+#Sys.sleep(.01)
+```
+
+> This document is written in Rstudio with R and python being used in its creation. This task uses raw data from [Zillow's Home Value Index(all homes-mid-tier)](https://www.zillow.com/research/data/). I begin by doing a few small evaluations with R and compare them to similar functions in python. Both languages perform very well and have nearly the same capabilities for business intelligence. I already provided several documents with R so the primary focus here is on python\'s capabilities. I produce several graphs with their content and attributes being refined with each new graph.
+>
+> #### Ultimately I ask: 
+>
+> ##### When did North Carolina suffer the worst housing price downturn in the past 20 years? This question is easily answered through the last graph.
+
+<html>
+
+<body style="background-color:#E7F9DF;">
+
+</body>
+
+</html>
+
+#### Read the file with R and assign to a variable.
+
+```{r  echo=FALSE, message=FALSE}
+library(readxl)
+# install.packages("reticulate")
+library("reticulate")
+ # py_install("pandas")
+ # py_install("sklearn")
+ # py_install('matplotlib')
+ # py_install("seaborn")
+
+Housing_Zillow <- read_excel("Housing_Zillow.xlsx")
+```
+
+# Evaluating with R:
+
+#### We will see:
+
+> -   The first two columns of the data to see what type of data we are viewing
+> -   The last two columns of the data to see if the data is the same, but this usually isn't necessary.
+> -   a statistical summary for the columns.
+
+> We can do a lot more with R but this task is more about what we can do with python.
+
+```{r}
+head(Housing_Zillow,2)
+tail(Housing_Zillow,2)
+#colnames(Housing_Zillow)  # this is redundant if you are also doing a summary
+df <- Housing_Zillow
+summary(df)
+```
+
+# Python section:
+
+> This section tests the analysis capabilities for python and R to see if they are roughly the same. The values provided below are to make tidying the data quicker and the interpreting the data faster. This will allow us to create the visualizations and complete the task.
+
+```{python echo=TRUE}
+import pandas as pd
+import numpy as np
+import sklearn  
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib
+from plotnine import *
+from numpy import nan
+
+```
+
+> -   This section reads in the data into a data frame.
+>
+> ```{=html}
+> <!-- -->
+> ```
+> -   We then perform an exploratory statistics analysis
+>
+>     -   Min, Max, Mean
+>
+> -   We also look at the dataframe's general info
+>
+>     -   Shape, Columns, Nulls, Zeros, and another general statistical summary
+
+```{python echo=FALSE}
+df = pd.read_excel("Housing_Zillow.xlsx",engine='openpyxl') 
+print("This is a count for how many Nulls are in each column: \n",df.isnull().sum())                                                           # this will count how many nulls are in each column
+print("This is the Minimum Value for the column 'mean_prices': ", df['mean_prices'].min())
+print("This is the Maximum Value for the column 'mean_prices: ", df['mean_prices'].max())
+print("This is the Rounded Mean Value: ",round(df['mean_prices'].mean(), 2))
+print("This is the Dataframe Shape: ",df.shape)
+print("This is the names for the Columns: ",df.columns)
+print("Basic info: ", df.info())  #this provides how many nulls are in the data set as well
+print("A Statistical Summary for the data: \n",df.describe())
+
+```
+
+# Visualizations:
+
+> -   This section will take the provided data and produce some graphs that should help decision makers make better decisions.
+> -   While each graph is improving upon the last graph these graphs are far from useful.
+
+```{python warning=FALSE, message=FALSE, echo=TRUE, results='hide'}
+# from plotnine import *   Needed to produce the ggplots
+(ggplot(df, aes("year", "mean_prices",color="StateName"))+ 
+geom_point()+
+labs(title = "All the States that will fit in one BUSY graph")
+)
+
+# Plotting the data for NC
+df1 = df.loc[df['StateName'] == "NC"]  # this locates a value within a column and saves to new df
+
+fig, ax = plt.subplots()                                  # creates subplots to overlay plots on top of one another
+ax.plot(df1["year"], df1["mean_prices"])
+plt.title("This graph is a little easier to read with just one state to plot,")                       # this adds a title to the graph
+plt.xticks(fontweight='bold', color='blue', rotation=37)  # This adds a blue color to the x-axis labels and rotates the to 37 degrees
+plt.show()                                                 # this shows the plot
+
+```
+
+# Improving Visualizations:
+
+> While the second graph is easier to read, The x-labels make the graph a challenge to interpret to say the least. If I reduce the number of dates on the graph we can focus on a specific region and zoom in on what we need to view. We can focus on one value within a column to provide improved focus if necessary.
+
+### When did North Carolina suffer the worst housing price downturn in the past 20 years?
+
+```{python warning=FALSE, results='hide'}
+df1 = df.loc[df['StateName'] == "NC"]   # This chooses a specific state
+
+start = "2008-01-31"                    # This chooses which dates to look closer at
+end = "2013-02-31"                      # This is the end date for closer view of the data
+mask = (start < df['year']) & (df['year'] <= end) # This sets a beginning and end date 
+df2=df1.loc[mask]
+df2['year'] = pd.to_datetime(df2['year'])          # converts the year to date time
+df2['year'] = df2['year'].dt.strftime('%Y-%m')     # converts the year-month-day to year-month
+
+# Begin visulizations
+(ggplot(df2, aes("year", "mean_prices", color= "StateName"))+ 
+geom_point()+
+labs(title="This graph enables us to easily answer the question")+
+theme(plot_background=element_rect(fill='gray'),
+plot_title=element_text(color="salmon", face="bold"),
+axis_text_x=element_text(color='blue', rotation =75,size =7),
+panel_grid_major_y=element_line(color='black',size=1,linetype='dashed'),)
+#geom_vline(xintercept = "2008-04-30", linetype = "dashed"),
+)
+
+```
+
+```{r echo=FALSE, warning=FALSE}
+endTime <- Sys.time()
+#*run_time: `r round(endTime-startTime,digits =2)` seconds.*
+
+
+```
+
+*run_time: `r round(endTime-startTime,digits =2)` seconds.*
