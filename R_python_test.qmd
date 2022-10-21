@@ -9,6 +9,14 @@ startTime <- Sys.time()
 #Sys.sleep(.01)
 ```
 
+<html>
+
+<body style="background-color:#E7F9DF;">
+
+</body>
+
+</html>
+
 > This document is written in Rstudio with R and python being used in its creation. This task uses raw data from [Zillow's Home Value Index(all homes-mid-tier)](https://www.zillow.com/research/data/). I begin by doing a few small evaluations with R and compare them to similar functions in python. Both languages perform very well and have nearly the same capabilities for business intelligence. I already provided several documents with R so the primary focus here is on python\'s capabilities. I produce several graphs with their content and attributes being refined with each new graph.
 >
 > #### Ultimately I ask: 
