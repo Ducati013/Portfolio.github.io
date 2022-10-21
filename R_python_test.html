@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R_and_Python_Working Together</title>
+<title>R and Python in Rstudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R_and_Python_Working Together</h1>
+<h1 class="title">R and Python in Rstudio</h1>
 </div>
 
 
@@ -122,19 +122,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<div class="cell">
+
+</div>
+<blockquote class="blockquote">
+<p>This document is written in Rstudio with R and python being used in its creation. This task uses raw data from <a href="https://www.zillow.com/research/data/">Zillow’s Home Value Index(all homes-mid-tier)</a>. I begin by doing a few small evaluations with R and compare them to similar functions in python. Both languages perform very well and have nearly the same capabilities for business intelligence. I already provided several documents with R so the primary focus here is on python's capabilities. I produce several graphs with their content and attributes being refined with each new graph.</p>
+<h4 id="ultimately-i-ask" class="anchored">Ultimately I ask:</h4>
+<h5 id="when-did-north-carolina-suffer-the-worst-housing-price-downturn-in-the-past-20-years-this-question-is-easily-answered-through-the-last-graph." class="anchored">When did North Carolina suffer the worst housing price downturn in the past 20 years? This question is easily answered through the last graph.</h5>
+</blockquote>
 
 
 
 
-<section id="python-in-rstudio" class="level1">
-<h1>Python in Rstudio</h1>
+<section id="read-the-file-with-r-and-assign-to-a-variable." class="level4">
+<h4 class="anchored" data-anchor-id="read-the-file-with-r-and-assign-to-a-variable.">Read the file with R and assign to a variable.</h4>
 <div class="cell">
 
 </div>
 </section>
 <section id="evaluating-with-r" class="level1">
 <h1>Evaluating with R:</h1>
-<p>For this page I am evaluating the data from <a href="https://www.zillow.com/research/data/">Zillow’s home value index(ZHVI)</a>. &nbsp;</p>
 <section id="we-will-see" class="level4">
 <h4 class="anchored" data-anchor-id="we-will-see">We will see:</h4>
 <blockquote class="blockquote">
@@ -184,6 +191,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Python section:</h1>
 <blockquote class="blockquote">
 <p>This section tests the analysis capabilities for python and R to see if they are roughly the same. The values provided below are to make tidying the data quicker and the interpreting the data faster. This will allow us to create the visualizations and complete the task.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> nan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<ul>
+<li>This section reads in the data into a data frame.</li>
+</ul>
+<!-- -->
+<ul>
+<li><p>We then perform an exploratory statistics analysis</p>
+<ul>
+<li>Min, Max, Mean</li>
+</ul></li>
+<li><p>We also look at the dataframe’s general info</p>
+<ul>
+<li>Shape, Columns, Nulls, Zeros, and another general statistical summary</li>
+</ul></li>
+</ul>
 </blockquote>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -246,23 +279,25 @@ max    909473.000000</code></pre>
 </ul>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from plotnine import *   Needed to produce the ggplots</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ggplot(df, aes(<span class="st">"year"</span>, <span class="st">"mean_prices"</span>,color<span class="op">=</span><span class="st">"StateName"</span>))<span class="op">+</span> geom_point()<span class="op">+</span>labs(title <span class="op">=</span> <span class="st">"All the States that will fit in one BUSY graph"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data for NC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from plotnine import *   Needed to produce the ggplots</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(ggplot(df, aes(<span class="st">"year"</span>, <span class="st">"mean_prices"</span>,color<span class="op">=</span><span class="st">"StateName"</span>))<span class="op">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>geom_point()<span class="op">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>labs(title <span class="op">=</span> <span class="st">"All the States that will fit in one BUSY graph"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the data for NC</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_python_test_images/unnamed-chunk-4-1.png" class="img-fluid" width="614"></p>
+<p><img src="R_python_test_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="614"></p>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.loc[df[<span class="st">'StateName'</span>] <span class="op">==</span> <span class="st">"NC"</span>]  <span class="co"># this locates a value within a column and saves to new df</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                                  <span class="co"># creates subplots to overlay plots on top of one another</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>ax.plot(df1[<span class="st">"year"</span>], df1[<span class="st">"mean_prices"</span>])</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"This graph is a little easier to read with just one state to plot,"</span>)                       <span class="co"># this adds a title to the graph</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontweight<span class="op">=</span><span class="st">'bold'</span>, color<span class="op">=</span><span class="st">'blue'</span>, rotation<span class="op">=</span><span class="dv">37</span>)  <span class="co"># This adds a blue color to the x-axis labels and rotates the to 37 degrees</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.show()                                                 <span class="co"># this shows the plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.loc[df[<span class="st">'StateName'</span>] <span class="op">==</span> <span class="st">"NC"</span>]  <span class="co"># this locates a value within a column and saves to new df</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                                  <span class="co"># creates subplots to overlay plots on top of one another</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ax.plot(df1[<span class="st">"year"</span>], df1[<span class="st">"mean_prices"</span>])</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"This graph is a little easier to read with just one state to plot,"</span>)                       <span class="co"># this adds a title to the graph</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontweight<span class="op">=</span><span class="st">'bold'</span>, color<span class="op">=</span><span class="st">'blue'</span>, rotation<span class="op">=</span><span class="dv">37</span>)  <span class="co"># This adds a blue color to the x-axis labels and rotates the to 37 degrees</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.show()                                                 <span class="co"># this shows the plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_python_test_images/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+<p><img src="R_python_test_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -271,26 +306,36 @@ max    909473.000000</code></pre>
 <blockquote class="blockquote">
 <p>While the second graph is easier to read, The x-labels make the graph a challenge to interpret to say the least. If I reduce the number of dates on the graph we can focus on a specific region and zoom in on what we need to view. We can focus on one value within a column to provide improved focus if necessary.</p>
 </blockquote>
-<section id="the-question-we-are-answering-is-when-did-north-carolina-suffer-the-worst-economic-downturn-in-the-past-20-years" class="level3">
-<h3 class="anchored" data-anchor-id="When-did-north-carolina-suffer-the-worst-economic-downturn-in-the-past-20-years">When did North Carolina suffer the worst economic downturn in the past 20 years?</h3>
+<section id="when-did-north-carolina-suffer-the-worst-housing-price-downturn-in-the-past-20-years" class="level3">
+<h3 class="anchored" data-anchor-id="when-did-north-carolina-suffer-the-worst-housing-price-downturn-in-the-past-20-years">When did North Carolina suffer the worst housing price downturn in the past 20 years?</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.loc[df[<span class="st">'StateName'</span>] <span class="op">==</span> <span class="st">"NC"</span>]   <span class="co"># This enables to choose a specific state</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2008-01-31"</span>                    <span class="co"># This chooses which dates to look closer at</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2013-02-31"</span>                      <span class="co"># This is the end date for closer view of the data</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (start <span class="op">&lt;</span> df[<span class="st">'year'</span>]) <span class="op">&amp;</span> (df[<span class="st">'year'</span>] <span class="op">&lt;=</span> end) <span class="co"># This sets a beginning and end date </span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>df1.loc[mask]</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>ggplot(df2, aes(<span class="st">"year"</span>, <span class="st">"mean_prices"</span>, color<span class="op">=</span> <span class="st">"StateName"</span>))<span class="op">+</span> geom_point()<span class="op">+</span>labs(title<span class="op">=</span><span class="st">"This graph enables us to easily answer the question"</span>)<span class="op">+</span>theme(plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">'gray'</span>),</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>plot_title<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"salmon"</span>, face<span class="op">=</span><span class="st">"bold"</span>),</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>axis_text_x<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">'blue'</span>, rotation <span class="op">=</span><span class="dv">75</span>,size <span class="op">=</span><span class="dv">7</span>),</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>panel_grid_major_y<span class="op">=</span>element_line(color<span class="op">=</span><span class="st">'black'</span>,size<span class="op">=</span><span class="dv">1</span>,linetype<span class="op">=</span><span class="st">'dashed'</span>),</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#geom_vline(xintercept = "2008-04-30", linetype = "dashed"),</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> df.loc[df[<span class="st">'StateName'</span>] <span class="op">==</span> <span class="st">"NC"</span>]   <span class="co"># This chooses a specific state</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2008-01-31"</span>                    <span class="co"># This chooses which dates to look closer at</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2013-02-31"</span>                      <span class="co"># This is the end date for closer view of the data</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (start <span class="op">&lt;</span> df[<span class="st">'year'</span>]) <span class="op">&amp;</span> (df[<span class="st">'year'</span>] <span class="op">&lt;=</span> end) <span class="co"># This sets a beginning and end date </span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>df1.loc[mask]</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'year'</span>] <span class="op">=</span> pd.to_datetime(df2[<span class="st">'year'</span>])          <span class="co"># converts the year to date time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'year'</span>] <span class="op">=</span> df2[<span class="st">'year'</span>].dt.strftime(<span class="st">'%Y-%m'</span>)     <span class="co"># converts the year-month-day to year-month</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Begin visulizations</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>(ggplot(df2, aes(<span class="st">"year"</span>, <span class="st">"mean_prices"</span>, color<span class="op">=</span> <span class="st">"StateName"</span>))<span class="op">+</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>geom_point()<span class="op">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>labs(title<span class="op">=</span><span class="st">"This graph enables us to easily answer the question"</span>)<span class="op">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>theme(plot_background<span class="op">=</span>element_rect(fill<span class="op">=</span><span class="st">'gray'</span>),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plot_title<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">"salmon"</span>, face<span class="op">=</span><span class="st">"bold"</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>axis_text_x<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">'blue'</span>, rotation <span class="op">=</span><span class="dv">75</span>,size <span class="op">=</span><span class="dv">7</span>),</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>panel_grid_major_y<span class="op">=</span>element_line(color<span class="op">=</span><span class="st">'black'</span>,size<span class="op">=</span><span class="dv">1</span>,linetype<span class="op">=</span><span class="st">'dashed'</span>),)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co">#geom_vline(xintercept = "2008-04-30", linetype = "dashed"),</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="R_python_test_images/unnamed-chunk-5-5.png" class="img-fluid" width="614"></p>
+<p><img src="R_python_test_files/figure-html/unnamed-chunk-7-5.png" class="img-fluid" width="614"></p>
 </div>
 </div>
+<div class="cell">
+
+</div>
+<p><em>run_time: 13.2 seconds.</em></p>
 </section>
 </section>
 
