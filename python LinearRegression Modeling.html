@@ -129,13 +129,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<p>This linear regression model uses raw data from <a href="https://www.zillow.com/research/data/">Zillow’s Home Value Index(all homes-mid-tier)</a>. 
-  I work through the raw data in a way to make the data suitable for the model. The first prediction for the whole data set is 16.91%, terrible.
-  The second prediction for the State of North Carolina has even worse results with 12.53% as the result. The third prediction had better results and focused on Raleigh,
-  North Carolina with 63.76% as the result.</p>
+<p>This linear regression model uses raw data from <a href="https://www.zillow.com/research/data/">Zillow’s Home Value Index(all homes-mid-tier)</a>. I work through the raw data in a way to make the data suitable for the model. The first prediction for the whole data set is 16.91%, terrible. The second prediction is for the State of North Carolina with 12.53% as the result, even worse. The third prediction focused on Raleigh, North Carolina with 63.76% as the result.</p>
 <ul>
-<li>The <strong>Best Prediction Result so far is 76.07%</strong>, This was achieved by focusing the prediction on <strong>one city</strong> and <strong>focusing the timeline</strong></li>
-<p><img src="R_python_test_images/unnamed-chunk-10-1.png" class="img-fluid" width="614"></p>
+<li>The <strong>Best Prediction Result so far is 90.47%</strong>, This was achieved by focusing the prediction on <strong>one city</strong> and a <strong>more focused timeline</strong>.</li>
 </ul>
 <section id="install-the-necessary-rstudio-libraries" class="level3">
 <h3 class="anchored" data-anchor-id="install-the-necessary-rstudio-libraries">Install the necessary Rstudio libraries</h3>
@@ -159,14 +155,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="install-the-necessary-python-tools" class="level3">
 <h3 class="anchored" data-anchor-id="install-the-necessary-python-tools">Install the necessary python tools</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for the modeling</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openturns <span class="im">as</span> ot</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># for the modeling</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openturns <span class="im">as</span> ot</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <h3 id="begin-with-reading-in-the-file-and-assigning-it-to-a-dataframe." class="anchored">Begin with reading in the file and assigning it to a dataframe.</h3>
@@ -206,11 +203,14 @@ Length: 326, dtype: int64</code></pre>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#drop all rows with nan or None</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df1<span class="op">=</span>df1.dropna()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># do we still have any nulls?</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Nulls within the columns\ Data to clean</span><span class="ch">\n</span><span class="st">'</span>, df1.isnull().<span class="bu">sum</span>())</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>df <span class="co"># to be used later to graph when a date is necessary</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.melt(df,id_vars<span class="op">=</span>[<span class="st">'RegionID'</span>,<span class="st">'SizeRank'</span>,<span class="st">'RegionName'</span>,<span class="st">'RegionType'</span>,<span class="st">'StateName'</span>],var_name<span class="op">=</span><span class="st">'year'</span>, value_name<span class="op">=</span><span class="st">'mean_prices'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>df2.dropna()</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the date to Ym format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># do we still have any nulls?</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Nulls within the columns\ Data to clean</span><span class="ch">\n</span><span class="st">'</span>, df1.isnull().<span class="bu">sum</span>())</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the date to Ym format</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Nulls within the columns\ Data to clean
  RegionID       0
@@ -223,7 +223,7 @@ mean_prices    0
 dtype: int64</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">'year'</span>] <span class="op">=</span> pd.to_datetime(df1[<span class="st">'year'</span>])          <span class="co"># converts the year to date time</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">'year'</span>] <span class="op">=</span> df1[<span class="st">'year'</span>].dt.strftime(<span class="st">'%Y%m'</span>)     <span class="co"># converts the year-month</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">'year'</span>] <span class="op">=</span> df1[<span class="st">'year'</span>].dt.strftime(<span class="st">'%Y%m'</span>)    <span class="co"># converts the year-month</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <h3 id="begin-the-linear-regression-modeling" class="anchored">Begin the Linear Regression Modeling:</h3>
@@ -299,15 +299,26 @@ dtype: int64</code></pre>
 <h3 id="accuracy-this-is-one-tough-market." class="anchored">76.07% accuracy, this is one tough market.</h3>
 </blockquote>
 <div class="cell">
+<div class="cell-output-display">
+<style>#sk-container-id-5 {color: black;background-color: white;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" checked=""><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The prediciton score for Raleigh, NC is:  90.47 %</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<h3 id="accuracy-this-time-with-a-more-refined-timeline-that-focuses-on-the-increased-shift-in-demand-through-the-most-currently-available-downward-trending-data." class="anchored">90.47% accuracy this time with a more refined timeline that focuses on the increased shift in demand through the most currently available downward trending data.</h3>
+</blockquote>
+<div class="cell">
 
 </div>
-<p><em>run_time: 14.6 seconds.</em></p>
+<p><em>run_time: 17.44 seconds.</em></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;ggplot: (180402696792)&gt;</code></pre>
+<pre><code>&lt;ggplot: (124345345633)&gt;</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="R_python_test_images/unnamed-chunk-10-1.png" class="img-fluid" width="614"></p>
+<p><img src="python-LinearRegression-Modeling_files/figure-html/Present%20Graph-1.png" class="img-fluid" width="614"></p>
 </div>
 </div>
 </section>
