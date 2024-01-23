@@ -201,7 +201,7 @@
 								</div>
 							</div>
 						</section>
-*/</script>  <!-- this removes all the text above -->
+
 						<!-- Four -->
 							<section id="four" class="wrapper alt style1">
 								<div class="inner">
@@ -261,7 +261,7 @@
 					</section>-->
 				
 				<!-- Future Section Header -->
-				
+*/</script>  <!-- this removes all the text above -->				
 				
 					<div class="inner">
 						<h2 style="font-size: 20px", style ="font-family: Didactic", class="major">As I learn more HTML this will continue to evolve and the data within the portfolio will be dynamic as well.</h2>
@@ -271,7 +271,72 @@
 						</p>
 					<!-- <section class="features"> -->
 					</div>
-				
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Images</title>
+    <style>
+        /* Style for the image container */
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        /* Style for each image */
+        .image-container img {
+            width: 150px; /* Adjust the width as needed */
+            height: 150px; /* Adjust the height as needed */
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        /* Style for image captions */
+        .caption {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <!-- Row 1 -->
+        <div>
+            <img src="images/Raleigh_Forecast.png" alt="Image 1" onclick="showCaption('Caption 1')">
+            <div class="caption">Caption 1</div>
+        </div>
+        <div>
+            <img src="images/Raleigh_Forecast.png" alt="Image 2" onclick="showCaption('Caption 2')">
+            <div class="caption">Caption 2</div>
+        </div>
+        <!-- Add more images as needed for Row 1 -->
+
+        <!-- Row 2 -->
+        <div>
+            <img src="images/Raleigh_Forecast.png" alt="Image 3" onclick="showCaption('Caption 3')">
+            <div class="caption">Caption 3</div>
+        </div>
+        <div>
+            <img src="images/Raleigh_Forecast.png" alt="Image 4" onclick="showCaption('Caption 4')">
+            <div class="caption">Caption 4</div>
+        </div>
+        <!-- Add more images as needed for Row 2 -->
+        
+        <!-- Add more rows with images as needed -->
+    </div>
+
+    <script>
+        // JavaScript function to show captions
+        function showCaption(caption) {
+            alert(caption); // You can customize this to display the caption in a different way
+        }
+    </script>
+
+</body>
+</html>
+			
 
 				<!-- Footer -->
 					<section id="footer">
