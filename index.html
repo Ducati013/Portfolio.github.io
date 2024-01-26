@@ -285,6 +285,29 @@
     <!--<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Clickable Images</title>
+
+	<style>
+        /* Your existing styles... */
+
+        /* Style for the search bar */
+        .search-bar {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            width: 200px;
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 8px 12px;
+            background-color: #0072c6;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 <style>
 	 /* Style for the top right corner */
         .top-right {
@@ -317,6 +340,8 @@
         .caption {
             text-align: center;
         }
+
+		
     </style>
 </head>
 <body>
@@ -334,7 +359,14 @@
             </a>
             <div class="caption">Caption 1</div>
         </div> -->
-	
+	<!-- Search bar -->
+    <div class="search-bar">
+        <form action="search_results.html" method="get">
+            <input type="text" name="query" placeholder="Search...">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
 <div class="image-container">
         <!-- Row 1 -->
 <div>
