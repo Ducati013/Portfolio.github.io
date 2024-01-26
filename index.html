@@ -364,14 +364,31 @@
             </a>
             <div class="caption">Caption 1</div>
         </div> -->
-	 <!-- Search bar -->
-	 <div class="search-bar">
-        <form action="search_results.html" method="get">
-            <input type="text" name="query" placeholder="Enter your search...">
+	  <!-- Search bar -->
+	  <div class="search-bar">
+        <form action="#" onsubmit="return searchPage()">
+            <input type="text" id="searchInput" name="query" placeholder="Enter your search...">
             <input type="submit" value="Search">
         </form>
     </div>
 
+    <script>
+        function searchPage() {
+            var query = document.getElementById("searchInput").value.toLowerCase();
+            var elements = document.getElementsByClassName("content");
+
+            for (var i = 0; i < elements.length; i++) {
+                var content = elements[i].textContent.toLowerCase();
+                if (content.includes(query)) {
+                    elements[i].innerHTML = content.replace(new RegExp(query, 'gi'), function (match) {
+                        return '<span class="search-result">' + match + '</span>';
+                    });
+                }
+            }
+
+            return false; // Prevents the form from submitting
+        }
+    </script>
 <div class="image-container">
         <!-- Row 1 -->
 <div>
