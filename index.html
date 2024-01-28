@@ -52,12 +52,17 @@
     }
 
     .image-container img {
-      max-width: 200px; /*width: 100%;*/
-      max-width: auto;  /*height: 100%;*/
-      object-fit: cover;
-      border: 2px solid #000000;
-      border-radius: 8px;
-      cursor: pointer;
+         width: 100%; /* Adjust the width as needed */
+	 height: 100%;/* Adjust the width as needed */
+	 max-width: 300px; /* Add a maximum width to prevent large images from stretching too much */
+	 max-height: 300px; /*width: 300px; /* Adjust the width as needed */
+	 /* height: 300px; /* Adjust the height as needed */
+	 object-fit: cover;  /* Maintain aspect ratio and cover the entire container */
+	 border: 2px solid #000000;
+	 border-radius: 8px;
+	 margin: 10px;
+	 cursor: pointer;
+
     }
 
     .image-container caption {
