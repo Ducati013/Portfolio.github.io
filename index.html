@@ -21,10 +21,9 @@
      						 	margin-right: 10px; -->
 			</div>			
 			
-<!--<!DOCTYPE html>
-<html lang="en">
+
 <head>
-	
+<!--	
 		<title>Kevin Foley</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" />
@@ -79,12 +78,18 @@
             flex-wrap: wrap;
             justify-content: space-around;
          }
-
-        /* Style for each image */
+	
+	.image-container figure {
+     	 	width: 45%; /* Adjust the width as needed */
+      	 	max-width: 200px; /* Add a maximum width to prevent large images from stretching too much */
+     		 margin: 10px;
+   	 }
+        
+	/* Style for each image */
         .image-container img {
 	    width: 45%; /* Adjust the width as needed */
-     	    max-width: 200px; /* Add a maximum width to prevent large images from stretching too much */
-	    /*width: 300px; /* Adjust the width as needed */
+     	    max-width: 300px; /* Add a maximum width to prevent large images from stretching too much */
+	    max-height: 300px; /*width: 300px; /* Adjust the width as needed */
            /* height: 300px; /* Adjust the height as needed */
 	    border: 2px solid #000000;
             border-radius: 8px;
@@ -94,7 +99,7 @@
 
         /* Style for image captions */
      
-	    .caption {
+	    .image-container caption {
 		color: black; /* Font color for the caption */
       		text-align: center; /* Center the text within the div */
 		/*font-size: 22px; /* Adjust font size as needed */
@@ -151,77 +156,77 @@
     </script>
 <div class="image-container">
         <!-- Row 1 -->
-<div>
+<figure>
 	<a href="images/Raleigh_Forecast.png">
         <img src="images/Raleigh_Forecast.png"  alt="image 1" title="Tableau Forecasting" onclick="showCaption('Let&apos;s Go')">
 	</a>
-	<div  class="caption">Tableau Forecasting </div>
- </div>
- <div>
+	<caption>Tableau Forecasting </caption>
+ </figure>
+ <figure>
 	 <a href="images/Forecast_Dash.png">
          <img src="images/Forecast_Dash.png" alt="Image 2" title="Tableau Forecasting Dashboard" onclick="showCaption('Let&apos;s Go')">
 	 </a>
-	 <div class="caption">Tableau Forecasting Dashboard</div>
- </div>
- <div>
+	 <caption>Tableau Forecasting Dashboard</caption>
+ </figure>
+ <figure>
 	<a href="RMD_Pivot_tables.html"> 
         <img src="images/PivotTables.jpg" alt="Image 3" title="R cleaned tidy data" onclick= "showCaption('Let&apos;s Go')">
 	</a>
-	<div class="caption">R cleaned tidy data</div>
-</div>
-<div>
+	<caption>R cleaned tidy data</caption>
+</figure>
+<figure>
 	<a href="DataAnalysisWithRMD.html"> 
         <img src="images/4waywindowZHVI_analysis_Chi_Denver_Hou_NY.png" title="R Analytics"  alt="Image 4" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">R Analytics</div>
- </div>
- <div>
+	<caption>R Analytics</div>
+</figure>
+ <figure>
 	<a href="https://kevinfoley013.shinyapps.io/InjuriesApp" > 
         <img src="images/ShinyApp.jpg" alt="Image 5" title="R's Shiny application" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">R's Shiny application</div>
-        </div>
+	<caption>R's Shiny application</caption>
+</figure>
         <!-- Add more images as needed for Row 1 -->
 
         <!-- Row 2 -->
         
- <div>
+ <figure>
 	<a href="SQL.html">
         <img src="images/Sql_Practice.jpg" alt="SQL" title="SQL Demonstration" onclick="showCaption('Let&apos;s Go')">
         </a>
-<div class="caption">SQL Demonstration</div>
-</div>
-<div>
+	<caption>SQL Demonstration</caption>
+</figure>
+<figure>
 	<a href= "exceldashboards.html">
         <img src="R_python_test_images/dashboardcover.png" alt="SQL" title="Excel Dashboards" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">Excel Dashboards</div>
-</div>
-<div>
+	<caption>Excel Dashboards</caption>
+</figure>
+<figure>
 	<a href= "python DecisionTreeRegression modeling.html">
         <img src="R_python_test_images/pyDT.png"alt="SQL" title="Python Decision Tree Regression Modeling" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">Python Decision Tree Regression Modeling</div>
-</div>  
-<div>
+	<caption>Python Decision Tree Regression Modeling</caption>
+ </figure>
+<figure>
 	<a href= "PythonLinearRegressionFast.html">
         <img src="images/pyLMRF.png" alt="SQL" title="Python Linear Regression Fast Modeling" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">Python Linear Regression Fast Modeling</div>
-</div>  
+	<caption>Python Linear Regression Fast Modeling</caption>
+ </figure>
 
-<div>
+<figure>
 	<a href= "python LinearRegression Modeling.html">
         <img src="R_python_test_images/pyLM.png" alt="SQL" title="Python Linear Regression Modeling" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">Python Linear Regression Modeling</div>
-</div>  
-<div>
+	<caption>Python Linear Regression Modeling</caption>
+</figure>
+<figure>
 	<a href= "pythonLogisticalRegression.html">
         <img src="images/pyLogLMCover.png" alt="SQL" title="Python Logistic Regression Modeling" onclick="showCaption('Let&apos;s Go')">
         </a>
-	<div class="caption">Python Logistic Regression Modeling</div>
-</div>  
+	<caption>Python Logistic Regression Modeling</caption>
+</figure>
 
 		
 	    
