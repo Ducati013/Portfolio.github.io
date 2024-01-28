@@ -31,6 +31,29 @@
       margin-top: 10px;
       right: 10px;
     }
+
+	 /* Define the button styles */
+    .custom-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      border: 2px solid #000; /* Black border */
+      border-radius: 5px; /* Rounded corners */
+      color: #000; /* Text color */
+      background-color: #ffffff; /* Background color */
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for color changes */
+    }
+
+    /* Change background and border color on hover */
+    .custom-button:hover {
+      background-color: #fff;
+      color: #000;
+      border-color: #8b0000;
+    }
+
     
     h1 {
       font-size: 38px; /* Adjust the font size as needed */
@@ -89,6 +112,9 @@
       height: auto; /* Maintain aspect ratio */
       margin-right: 5px; /* Add some right margin for spacing */
     }
+
+
+   
  /* Media query for screens up to 600px 
    @media (max-width: 100%) {
       header {
@@ -122,7 +148,7 @@
       <p>Contact Info:</p>
       <p>Email: krfoley013@gmail.com</p>
       <p>Email: krf8301@uncw.edu</p>
-      <p><a href="https://www.linkedin.com/in/kevin-foley-1691b1a1" style="color: white; font-family: Didactic, class="special">click here for <strong style="color: white;">LinkedIn</strong></a> </br></p>
+      <p><a href="https://www.linkedin.com/in/kevin-foley-1691b1a1" style="color: white; font-family: Didactic, class="custom-button"><strong style="color: white;">LinkedIn</strong></a> </br></p>
       <p><a href="https://bold.pro/my/kevin-foley-230502142051" style="color: white; font-size: 16px; font-family: Didactic", class="special"> click here for <strong style="color: white;">Resume</strong> </a></p>
     </div>
   </header>
