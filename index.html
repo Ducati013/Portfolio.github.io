@@ -1,128 +1,82 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Kevin Foley</title>
-			<meta charset="utf-8" />
-			<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes" />
-			<!--<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,width=device-width,height=device-height,target-densitydpi=device-dpi,user-scalable=yes" /> -->
-			<!--<meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-			<link rel="stylesheet" href="assets/css/main.css" />
-			<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
-		<title>Indented H2</title>
-			<div class="inner" , style="color: white; background-color: #0032a3;  padding: 40px; text-align: center;">  <!-- #007bff old sky blue--> <!-- #2c6cff alternative slightly darker sky blue-->
-			<h2     style="color: white; font-size: 40px; font-family: Didactic; text-align: center"
-				class="major", style="color: white"> Welcome to Kevin Foley's portfolio
-			</h2>
-			<!--<img src="images/Me1.JPG" alt="" width: "25" style="height: auto; position: absolute; top: 0; left: 0;">
-     			 float: left; 
-     			margin-right: 10px; -->
-			</div>			
-			
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Kevin Foley's Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-	<head>
-    <title>Clickable Images</title>
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-	<style>
-		 /* Style for the top right corner */
-	        .top-right {
-	            position: fixed;
-	            top: 10px;
-	            right: 10px;
-	            color: #FFFFFF; /* Adjust color as needed */
-	            font-size: 20px; /* Adjust font size as needed */
-	            font-weight: bold;
-	        }
-	</style>
-    	<style>
-	        /* Style for the image container */
-	        .image-container {
-	            display: flex;
-	            flex-wrap: wrap;
-	            justify-content: space-around;
-	         }
-		
-		.image-container figure {
-	     	 	width: 200px; /* Fixed width for all images */
-      			height: 200px; /* Fixed height for all images */
-			/*width: 45%; /* Adjust the width as needed */
-	      	 	/*max-width: 200px; /* Add a maximum width to prevent large images from stretching too much */
-	     		 margin: 10px;
-	   	 }
-	        
-		/* Style for each image */
-	        .image-container img {
-		    width: 100%; /* Adjust the width as needed */
-	     	    height: 100%;/* Adjust the width as needed */
-		    max-width: 300px; /* Add a maximum width to prevent large images from stretching too much */
-		    max-height: 300px; /*width: 300px; /* Adjust the width as needed */
-	           /* height: 300px; /* Adjust the height as needed */
-		    object-fit: cover;  /* Maintain aspect ratio and cover the entire container */
-		    border: 2px solid #000000;
-	            border-radius: 8px;
-	            margin: 10px;
-	            cursor: pointer;
-	        }
-	
-	        /* Style for image captions */
-	     
-		.image-container caption {
-			color: black; /* Font color for the caption */
-	      		text-align: center; /* Center the text within the div */
-			/*font-size: 22px; /* Adjust font size as needed */
-			font-weight: bold;
-			font-family: Didactic
-		}
-	    
-	    </style>
-		
-    
+    .contact-info {
+      text-align: right;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .image-container figure {
+      width: 200px;
+      margin: 10px;
+      overflow: hidden;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .image-container caption {
+      text-align: center;
+      margin-top: 5px;
+    }
+  </style>
 </head>
-	<body>
-	
-		<title>Contact information</title>
-			<div class="top-right">
-		      	Contact: krfoley013@gmail.com<br/>
-			krf8301@uncw.edu<br/>
-			<a href="https://www.linkedin.com/in/kevin-foley-1691b1a1" style="color: white; font-family: Didactic, class="special">click here for <strong style="color: white;">LinkedIn</strong></a>
-			<a href="https://bold.pro/my/kevin-foley-230502142051" style="color: white; font-size: 16px; font-family: Didactic", class="special"> click here for <strong style="color: white;">Resume</strong> </a>
-			</div>
-
-		<!-- <div>
-		            <a href="your_link1.html">
-		                <img src="image1.jpg" alt="Image 1" onclick="showCaption('Caption 1')">
-		            </a>
-		            <div class="caption">Caption 1</div>
-		        </div> -->
-			  <!-- Search bar -->
-		  <!--  <div class="search-bar">
-		        <form action="#" onsubmit="return searchPage()">
-		            <input type="text" id="searchInput" name="query" placeholder="Enter your search...">
-		            <!--<input type="number" id="numericInput" name="numeric" placeholder="Enter a number..."> 
-		            <input type="submit" value="Search">
-		        </form>
-		    </div>  -->
-
-
-		    <script>
-		        function searchPage() {
-		            var query = document.getElementById("searchInput").value.toLowerCase();
-		            var elements = document.getElementsByClassName("content");
-		
-		            for (var i = 0; i < elements.length; i++) {
-		                var content = elements[i].textContent.toLowerCase();
-		                if (content.includes(query)) {
-		                    elements[i].innerHTML = content.replace(new RegExp(query, 'gi'), function (match) {
-		                        return '<span class="search-result">' + match + '</span>';
-		                    });
-		                }
-		            }
-		
-		            return false; // Prevents the form from submitting
-		        }
-		    </script>
+<body>
+  <header>
+    <h1>Welcome to My Page</h1>
+    <div class="contact-info">
+      <p>Contact Info:</p>
+      <p>Email: krfoley013@gmail.com</p>
+      <p>Email: krf8301@uncw.edu</p>
+      <p><a href="https://www.linkedin.com/in/kevin-foley-1691b1a1" style="color: white; font-family: Didactic, class="special">click here for <strong style="color: white;">LinkedIn</strong></a> </br></p>
+      <p><a href="https://bold.pro/my/kevin-foley-230502142051" style="color: white; font-size: 16px; font-family: Didactic", class="special"> click here for <strong style="color: white;">Resume</strong> </a></p>
+    </div>
+  </header>
+<main>
+ 
 		<div class="image-container">
 			        <!-- Row 1 -->
+			<!-- <figure>
+			        <a href="image1-source.jpg" target="_blank">
+			          <img src="image1.jpg" alt="Image 1">
+			        </a>
+			        <figcaption>Title for Image 1</figcaption>
+			</figure>-->
 			<figure>
 				<a href="images/Raleigh_Forecast.png">
 			        <img src="images/Raleigh_Forecast.png"  alt="image 1" title="Tableau Forecasting" onclick="showCaption('Let&apos;s Go')">
