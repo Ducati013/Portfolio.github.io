@@ -327,6 +327,7 @@
 
         menuItems.forEach(item => {
             item.addEventListener('click', function () {
+		event.preventDefault(); // Prevent the default anchor behavior
                 const submenu = this.querySelector('.submenu');
                 submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
             });
