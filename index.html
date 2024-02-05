@@ -273,6 +273,68 @@
 			</figure>
 		
 		</div>
+
+		<!-- for use with <use> -->
+<svg xmlns="http://www.w3.org/2000/svg"  hidden>
+  <symbol id="arrow" viewbox="0 0 16 16" >
+    <polyline points="4 6, 8 10, 12 6" stroke="#000" stroke-width="2" fill="transparent" stroke-linecap="round" />
+  </symbol>
+</svg>
+
+<!-- In the real world, all hrefs would have go to real, unique URLs, not a "#" -->
+<nav id="site-navigation" class="site-navigation" aria-label="Clickable Menu Demonstration">
+  <ul class="main-menu clicky-menu no-js">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li>
+      <a href="#">
+        Visalizations
+        <svg aria-hidden="true" width="16" height="16">
+          <use xlink:href="#arrow" />
+        </svg>
+      </a>
+      <ul>
+        <li><a href="#">Visualizations</a></li>
+        <li><a <a href="images/Tableau customer satisfaction.jpg">
+		<img src="images/Tableau customer satisfaction.jpg" alt="Image 2.2" title="Tableau customer satisfaction" onclick="showCaption('Let&apos;s Go')">
+		Tableau</a></li>
+        <li><a href="#">Power BI</a></li>
+        <li><a href="#">Excel</a></li>
+        <!--<li><a href="#">Training</a></li>-->
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        R Analytics
+        <svg aria-hidden="true" width="16" height="16">
+          <use xlink:href="#arrow" />
+        </svg>
+      </a>
+      <ul>
+        <li><a href="#">R Analytics</a></li>
+        <li><a href="#">Analysis</a></li>
+        <li><a href="#">Forecasting</a></li>
+        <li><a href="#">Something Else</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">
+        Python Analytics
+        <svg aria-hidden="true" width="16" height="16">
+          <use xlink:href="#arrow" />
+        </svg>
+      </a>
+      <ul>
+        <li><a href="#">Analysis</a></li>
+        <li><a href="#">Forecasting</a></li>
+        <li><a href="#">Prescription</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<p class="github"><a href="https://github.com/mrwweb/clicky-menus">Now on Github</a></p>
 	     </main>		    
 	</body>
 </html>
