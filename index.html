@@ -258,7 +258,7 @@
 </nav>
 		
 		
-<!-- This is the section for making the click down menue collapse -->
+<!-- This is the section for making the click down menue collapse 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const menuItems = document.querySelectorAll('.has-submenu');
@@ -273,6 +273,38 @@
                 submenu.style.left = rect.left + 'px';
                 submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
             });
+        });
+    });
+</script>-->
+	<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuItems = document.querySelectorAll('.has-submenu');
+
+        menuItems.forEach(item => {
+            const anchor = item.querySelector('a');
+            anchor.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default anchor behavior
+                
+                // Close all open submenus
+                document.querySelectorAll('.submenu').forEach(submenu => {
+                    submenu.style.display = 'none';
+                });
+
+                const submenu = item.querySelector('.submenu');
+                const rect = anchor.getBoundingClientRect();
+                submenu.style.top = rect.bottom + 'px';
+                submenu.style.left = rect.left + 'px';
+                submenu.style.display = 'block';
+            });
+        });
+
+        // Close all submenus when clicking outside of the nav
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('nav')) {
+                document.querySelectorAll('.submenu').forEach(submenu => {
+                    submenu.style.display = 'none';
+                });
+            }
         });
     });
 </script>
