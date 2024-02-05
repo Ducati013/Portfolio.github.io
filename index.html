@@ -153,7 +153,7 @@
             /*left: 0;  */
 	    left: 0%; /* Center the submenu horizontally */
             background-color: #000000;
-	    background-image: url("images/bg.jpg"); /* Replace 'your-image-url.jpg' with the actual image URL */
+	    background-image: url("images/Blackboard background.jpg"); /* Replace 'your-image-url.jpg' with the actual image URL */
             background-size: cover; /* Adjust as needed */
             background-position: center; /* Adjust as needed */
             min-width: 160px;
@@ -325,10 +325,10 @@
         menuItems.forEach(item => {
             const anchor = item.querySelector('a');
             const submenu = item.querySelector('.submenu');
-            
+
             anchor.addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent the default anchor behavior
-                
+
                 const isOpen = submenu.style.display === 'block';
 
                 // Close all open submenus
@@ -342,13 +342,13 @@
             });
 
             // Position the submenu below the anchor
-            const rect = anchor.getBoundingClientRect();
-            submenu.style.top = rect.bottom + 'px';
+            submenu.style.left = '0';
+            submenu.style.top = anchor.offsetHeight + 'px';
         });
 
         // Close all submenus when clicking outside of the nav
         document.addEventListener('click', function (event) {
-            if (!event.target.closest('nav')) {
+            if (!event.target.closest('.has-submenu')) {
                 document.querySelectorAll('.submenu').forEach(submenu => {
                     submenu.style.display = 'none';
                 });
@@ -356,6 +356,7 @@
         });
     });
 </script>
+
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section-->
