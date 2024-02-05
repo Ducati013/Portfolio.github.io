@@ -347,8 +347,9 @@
 
             // Position the submenu below the anchor
             submenu.style.left = '0';
-            submenu.style.top = anchor.offsetHeight + 'px';
+            submenu.style.top = anchor.querySelector('img').offsetHeight + 'px';
             submenu.style.width = anchor.offsetWidth + 'px';
+            submenu.style.marginTop = '0'; // Reset any previous marginTop
         });
 
         // Close all submenus when clicking outside of the nav
