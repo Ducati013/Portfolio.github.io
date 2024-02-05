@@ -223,7 +223,7 @@
       <p>Email: krfoley013@gmail.com</p>
       <p>Email: krf8301@uncw.edu</p>
       <p><a href="https://www.linkedin.com/in/kevin-foley-1691b1a1" style="color: white; font-family: Didactic, class="custom-button"><strong style="color: white;">LinkedIn</strong    ></a> </br></p>
-      <p><a href="https://bold.pro/my/kevin-foley-230502142051" style="color: white; font-size: 16px; font-family: Didactic", class="cutom-button"><strong style="color: white;">Resume</strong>     </a></p>
+      <p><a href="https://bold.pro/my/kevin-foley-230502142051" style="color: white; font-size: 16px; font-family: Didactic", class="custom-button"><strong style="color: white;">Resume</strong>     </a></p>
     </div>
   </header>
 
@@ -362,46 +362,42 @@
 <!-- End Paragraph-->
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuItems = document.querySelectorAll('.has-submenu');
+  document.addEventListener('DOMContentLoaded', function () {
+    const menuItems = document.querySelectorAll('.has-submenu');
 
-        menuItems.forEach(item => {
-            const anchor = item.querySelector('img');
-            const submenu = item.querySelector('.submenu');
+    menuItems.forEach(item => {
+      const anchor = item.querySelector('a');
+      const submenu = item.querySelector('.submenu');
 
-            anchor.addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent the default anchor behavior
+      anchor.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default anchor behavior
 
-                const isOpen = submenu.style.display === 'block';
+        const isOpen = submenu.style.display === 'block';
 
-                // Close all open submenus
-                document.querySelectorAll('.submenu').forEach(submenu => {
-                    submenu.style.display = 'none';
-                });
-
-                if (!isOpen) {
-                    submenu.style.display = 'block';
-                }
-            });
-
-            // Position the submenu below the anchor
-            submenu.style.left = '0';
-            submenu.style.top = anchor.querySelector('img').offsetHeight + 'px';
-            submenu.style.width = anchor.offsetWidth + 'px';
-            submenu.style.marginTop = '0'; // Reset any previous marginTop
+        // Close all open submenus
+        document.querySelectorAll('.submenu').forEach(submenu => {
+          submenu.style.display = 'none';
         });
 
-        // Close all submenus when clicking outside of the nav
-        document.addEventListener('click', function (event) {
-            if (!event.target.closest('.has-submenu')) {
-                document.querySelectorAll('.submenu').forEach(submenu => {
-                    submenu.style.display = 'none';
-                });
-            }
-        });
+        if (!isOpen) {
+          // Position the submenu below the anchor
+          submenu.style.top = anchor.offsetHeight + 'px';
+          submenu.style.left = '0';
+          submenu.style.width = anchor.offsetWidth + 'px';
+          submenu.style.display = 'block';
+        }
+      });
+
+      // Close all submenus when clicking outside of the nav
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('.has-submenu')) {
+          document.querySelectorAll('.submenu').forEach(submenu => {
+            submenu.style.display = 'none';
+          });
+        }
+      });
     });
-</script>
-
+  </script>
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section-->
@@ -437,42 +433,42 @@
 
 			<figure>
 				 <a href="images/JMP.png" >
-			           <img src= "images/JMP.png" alt="image4" title="JMP Using all available methods " onclick="showCaption('Let&apos;s Go')">
+			           <img src= "images/JMP.png" alt="image4" title="JMP Using all available methods " >
 				 </a>
 				 <figcaption>JMP Demonstration</figcaption>
 			 </figure>
 
 			<figure>
 				<a href="DataAnalysisWithRMD.html"> 
-			          <img src="images/4waywindowZHVI_analysis_Chi_Denver_Hou_NY.png" title="R Analytics"  alt="Image 4" onclick="showCaption('Let&apos;s Go')">
+			          <img src="images/4waywindowZHVI_analysis_Chi_Denver_Hou_NY.png" title="R Analytics"  alt="Image 4" >
 			        </a>
 				<figcaption>R Analytics</figcaption>
 			</figure>
 
 			<figure>
 				<a href= "python LinearRegression Modeling.html">
-			          <img src="R_python_test_images/pyLM.png" alt="SQL" title="Python Linear Regression Modeling" onclick="showCaption('Let&apos;s Go')">
+			          <img src="R_python_test_images/pyLM.png" alt="SQL" title="Python Linear Regression Modeling">
 			        </a>
 				<figcaption>Python Linear Regression Modeling</figcaption>
 			</figure>
 
 			 <figure>
 				<a href="SQL.html">
-			          <img src="images/Sql_Practice.jpg" alt="SQL" title="SQL Demonstration" onclick="showCaption('Let&apos;s Go')">
+			          <img src="images/Sql_Practice.jpg" alt="SQL" title="SQL Demonstration">
 			        </a>
 				<figcaption>SQL Demonstration</figcaption>
 			</figure>
 
 			 <figure>
 				<a href="https://kevinfoley013.shinyapps.io/InjuriesApp" > 
-			          <img src="images/ShinyApp.jpg" alt="Image 5" title="R's Shiny application" onclick="showCaption('Let&apos;s Go')">
+			          <img src="images/ShinyApp.jpg" alt="Image 5" title="R's Shiny application">
 			        </a>
 				<figcaption>R's Shiny application</figcaption>
 			</figure>
 
 			<figure>
 				<a href="RMD_Pivot_tables.html"> 
-			          <img src="images/PivotTables.jpg" alt="Image 3" title="R cleaned tidy data" onclick= "showCaption('Let&apos;s Go')">
+			          <img src="images/PivotTables.jpg" alt="Image 3" title="R cleaned tidy data">
 				</a>
 				<figcaption>R cleaned tidy data</figcaption>
 			</figure>
@@ -480,27 +476,27 @@
 
 			<figure>
 				<a href="images/Raleigh_Forecast.png">
-			          <img src="images/Raleigh_Forecast.png"  alt="image 1" title="Tableau Forecasting" onclick="showCaption('Let&apos;s Go')">
+			          <img src="images/Raleigh_Forecast.png"  alt="image 1" title="Tableau Forecasting" >
 				</a>
 				<figcaption>Tableau Forecasting </figcaption>
 			 </figure>
 			 
 			<figure>
 				 <a href="images/Tableau customer satisfaction.jpg">
-			           <img src="images/Tableau customer satisfaction.jpg" alt="Image 2.2" title="Tableau customer satisfaction" onclick="showCaption('Let&apos;s Go')">
+			           <img src="images/Tableau customer satisfaction.jpg" alt="Image 2.2" title="Tableau customer satisfaction" >
 				 </a>
 				 <figcaption>Tableau customer satisfaction</figcaption>
 			 </figure>
 			
 			<figure>
 				<a href= "python DecisionTreeRegression modeling.html">
-			          <img src="R_python_test_images/pyDT.png"alt="SQL" title="Python Decision Tree Regression Modeling" onclick="showCaption('Let&apos;s Go')">
+			          <img src="R_python_test_images/pyDT.png"alt="SQL" title="Python Decision Tree Regression Modeling" >
 			        </a>
 				<figcaption>Python Decision Tree Regression Modeling</figcaption>
 			 </figure>
 			<figure>
 				<a href= "PythonLinearRegressionFast.html">
-			          <img src="images/pyLMRF.png" alt="SQL" title="Python Linear Regression Fast Modeling" onclick="showCaption('Let&apos;s Go')">
+			          <img src="images/pyLMRF.png" alt="SQL" title="Python Linear Regression Fast Modeling" >
 			        </a>
 				<figcaption>Python Linear Regression Fast Modeling</figcaption>
 			 </figure>
@@ -508,7 +504,7 @@
 			
 			<figure>
 				<a href= "pythonLogisticalRegression.html">
-			          <img src="images/pyLogLMCover.png" alt="SQL" title="Python Logistic Regression Modeling" onclick="showCaption('Let&apos;s Go')">
+			          <img src="images/pyLogLMCover.png" alt="SQL" title="Python Logistic Regression Modeling" >
 			        </a>
 				<figcaption>Python Logistic Regression Modeling</figcaption>
 			</figure>
