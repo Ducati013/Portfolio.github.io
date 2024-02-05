@@ -321,10 +321,11 @@
 
         menuItems.forEach(item => {
             const anchor = item.querySelector('a');
+            const submenu = item.querySelector('.submenu');
+            
             anchor.addEventListener('click', function (event) {
                 event.preventDefault(); // Prevent the default anchor behavior
                 
-                const submenu = item.querySelector('.submenu');
                 const isOpen = submenu.style.display === 'block';
 
                 // Close all open submenus
@@ -333,11 +334,13 @@
                 });
 
                 if (!isOpen) {
-                    const rect = anchor.getBoundingClientRect();
-                    submenu.style.top = rect.bottom + 'px';
                     submenu.style.display = 'block';
                 }
             });
+
+            // Position the submenu below the anchor
+            const rect = anchor.getBoundingClientRect();
+            submenu.style.top = rect.bottom + 'px';
         });
 
         // Close all submenus when clicking outside of the nav
@@ -350,7 +353,6 @@
         });
     });
 </script>
-
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section-->
