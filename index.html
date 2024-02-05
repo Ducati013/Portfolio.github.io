@@ -366,38 +366,34 @@
     const menuItems = document.querySelectorAll('.has-submenu');
 
     menuItems.forEach(item => {
-      const anchor = item.querySelector('a');
+      const image = item.querySelector('img');
       const submenu = item.querySelector('.submenu');
 
-      anchor.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default anchor behavior
+      image.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default image behavior
 
-        const isOpen = submenu.style.display === 'block';
+        // Toggle the submenu display
+        submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
 
-        // Close all open submenus
+        // Close all other open submenus
+        document.querySelectorAll('.has-submenu').forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.querySelector('.submenu').style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Close all submenus when clicking outside of the nav
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.has-submenu')) {
         document.querySelectorAll('.submenu').forEach(submenu => {
           submenu.style.display = 'none';
         });
-
-        if (!isOpen) {
-          // Position the submenu below the anchor
-          submenu.style.top = anchor.offsetHeight + 'px';
-          submenu.style.left = '0';
-          submenu.style.width = anchor.offsetWidth + 'px';
-          submenu.style.display = 'block';
-        }
-      });
-
-      // Close all submenus when clicking outside of the nav
-      document.addEventListener('click', function (event) {
-        if (!event.target.closest('.has-submenu')) {
-          document.querySelectorAll('.submenu').forEach(submenu => {
-            submenu.style.display = 'none';
-          });
-        }
-      });
+      }
     });
-  </script>
+  });
+</script>
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section-->
