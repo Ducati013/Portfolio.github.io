@@ -145,6 +145,9 @@
             height: auto;
             margin-bottom: 5px;
         }
+	  .has-submenu {
+            position: relative;
+        }
 
        .submenu {
             display: none;
@@ -153,7 +156,7 @@
             /*left: 0;  */
 	    left: 0%; /* Center the submenu horizontally */
             background-color: #000000;
-	    background-image: url("images/Blackboard background.jpg"); /* Replace 'your-image-url.jpg' with the actual image URL */
+	    background-image: url("images/Blackboard background.png"); /* Replace 'your-image-url.jpg' with the actual image URL */
             background-size: cover; /* Adjust as needed */
             background-position: center; /* Adjust as needed */
             min-width: 160px;
@@ -344,6 +347,7 @@
             // Position the submenu below the anchor
             submenu.style.left = '0';
             submenu.style.top = anchor.offsetHeight + 'px';
+            submenu.style.width = anchor.offsetWidth + 'px';
         });
 
         // Close all submenus when clicking outside of the nav
