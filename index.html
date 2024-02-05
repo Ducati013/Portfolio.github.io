@@ -265,7 +265,8 @@
 
         menuItems.forEach(item => {
             item.addEventListener('click', function (event) {
-                const submenu = this.querySelector('.submenu');
+		event.preventDefault(); // Prevent the default anchor behavior
+                const submenu = this.parentNode.querySelector('.submenu');
                 submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
             });
         });
