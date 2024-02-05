@@ -264,14 +264,16 @@
         const menuItems = document.querySelectorAll('.has-submenu');
 
         menuItems.forEach(item => {
-            item.addEventListener('click', function (event) {
-		event.preventDefault(); // Prevent the default anchor behavior
-                const submenu = this.parentNode.querySelector('.submenu');
+            const anchor = item.querySelector('a');
+            anchor.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default anchor behavior
+                const submenu = item.querySelector('.submenu');
                 submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
             });
         });
     });
 </script>
+
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section-->
