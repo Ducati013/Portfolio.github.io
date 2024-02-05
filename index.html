@@ -120,39 +120,13 @@
       margin-right: 5px; /* Add some right margin for spacing */
     }
 
-
-   
- /* Media query for screens up to 600px */
-   @media (max-width: 100%) {
-      header {
-        width: 100%;
-	padding: 10px;
-	
-	
-      }
-
-      .contact-info {
-        text-align: center;
-        margin-left: auto;
-        margin-top: 5px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .image-container figure {
-        width: 100%;
-        
-      }
-
-	/* This is where the click down menu begins-->*/
-	    nav {
-            background-color: #333;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-        }
+  /* This is where the click down menu begins-->*/
+    nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
 
         nav a {
             color: white;
@@ -190,6 +164,33 @@
             text-decoration: none;
             display: block;
         }
+
+   
+ /* Media query for screens up to 600px */
+   @media (max-width: 100%) {
+      header {
+        width: 100%;
+	padding: 10px;
+	
+	
+      }
+
+      .contact-info {
+        text-align: center;
+        margin-left: auto;
+        margin-top: 5px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .image-container figure {
+        width: 100%;
+        
+      }
+
+	
   </style>
 </head>
 <body>
@@ -318,7 +319,20 @@
 			</figure>
 		
 		</div>
+<!-- This is the section for making the click down menue collapse -->
+<script>
+    // JavaScript to toggle the visibility of submenus on click
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuItems = document.querySelectorAll('.has-submenu');
 
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const submenu = this.querySelector('.submenu');
+                submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    });
+</script>
 		
   <symbol id="arrow" viewbox="0 0 16 16" >
     <polyline points="4 6, 8 10, 12 6" stroke="#000" stroke-width="2" fill="transparent" stroke-linecap="round" />
