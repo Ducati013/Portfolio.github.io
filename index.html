@@ -136,10 +136,11 @@
             flex-direction: column;
             align-items: center;
             position: relative;
+	    cursor: pointer; /* Add this to show a pointer cursor on hover */
         }
 
         nav img {
-            width: 250px; /* Adjust the size of the images as needed */
+            width: 350px; /* Adjust the size of the images as needed */
             height: auto;
             margin-bottom: 5px;
         }
@@ -148,7 +149,9 @@
             display: none;
             position: absolute;
             top: 100%;
-            left: 0;
+            /*left: 0;  */
+	    left: 50%; /* Center the submenu horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
             background-color: #000000;
             min-width: 160px;
             z-index: 1;
@@ -329,7 +332,6 @@
                 if (!isOpen) {
                     const rect = anchor.getBoundingClientRect();
                     submenu.style.top = rect.bottom + 'px';
-                    submenu.style.left = rect.left + 'px';
                     submenu.style.display = 'block';
                 }
             });
