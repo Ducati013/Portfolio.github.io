@@ -517,25 +517,6 @@
 
 	     </main>
 
-	<!-- page view counter -->
-	<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Retrieve the current count from local storage
-        let count = localStorage.getItem('pageviewCount') || 0;
-
-        // Display the current count
-        document.getElementById('count').textContent = count;
-
-        // Increment the count on each page load
-        count++;
-        document.getElementById('pageview-count').textContent = `Pageviews: ${count}`;
-
-        // Save the updated count to local storage
-        localStorage.setItem('pageviewCount', count.toString());
-    });
-</script>
-	<!-- Eng page view counter -->
-
 	</body>
 </html>
 
