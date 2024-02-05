@@ -180,7 +180,7 @@
 
    
  /* Media query for screens up to 600px */
-   @media (max-width: 100%) {
+   @media (min-width:600 px, max-width: 100%) {
       header {
         width: 100%;
 	padding: 10px;
@@ -203,14 +203,10 @@
         
       }
 
-      nav {
-        font-size: 24px;
-      }
-
-      .image-container figure {
-        width: 100%;
-        
-      }
+     nav {
+                flex-direction: row; /* Revert to horizontal layout */
+                justify-content: space-between;
+            }
 
 	
   </style>
