@@ -211,21 +211,7 @@
 
 	<main>
 		
-<!-- This is the section for making the click down menue collapse -->
-<script>
-    // JavaScript to toggle the visibility of submenus on click
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuItems = document.querySelectorAll('.has-submenu');
 
-        menuItems.forEach(item => {
-            item.addEventListener('click', function () {
-		event.preventDefault(); // Prevent the default anchor behavior
-                const submenu = this.querySelector('.submenu');
-                submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
-            });
-        });
-    });
-</script>
 		
   <symbol id="arrow" viewbox="0 0 16 16" >
     <polyline points="4 6, 8 10, 12 6" stroke="#000" stroke-width="2" fill="transparent" stroke-linecap="round" />
@@ -270,6 +256,21 @@
         </div>
     </a>
 </nav>
+		
+		
+<!-- This is the section for making the click down menue collapse -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuItems = document.querySelectorAll('.has-submenu');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function (event) {
+                const submenu = this.querySelector('.submenu');
+                submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    });
+</script>
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section-->
