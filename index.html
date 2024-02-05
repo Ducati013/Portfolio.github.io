@@ -122,7 +122,7 @@
 
 
    
- /* Media query for screens up to 600px 
+ /* Media query for screens up to 600px */
    @media (max-width: 100%) {
       header {
         width: 100%;
@@ -145,6 +145,51 @@
         width: 100%;
         
       }
+
+	/* This is where the click down menu begins-->*/
+	    nav {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        nav img {
+            width: 30px; /* Adjust the size of the images as needed */
+            height: auto;
+            margin-bottom: 5px;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #555;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        nav a:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+        }
   </style>
 </head>
 <body>
@@ -274,65 +319,50 @@
 		
 		</div>
 
-		<!-- for use with <use> -->
-<svg xmlns="http://www.w3.org/2000/svg"  hidden>
+		
   <symbol id="arrow" viewbox="0 0 16 16" >
     <polyline points="4 6, 8 10, 12 6" stroke="#000" stroke-width="2" fill="transparent" stroke-linecap="round" />
   </symbol>
 </svg>
 
-<!-- In the real world, all hrefs would have go to real, unique URLs, not a "#" -->
-<nav id="site-navigation" class="site-navigation" aria-label="Clickable Menu Demonstration">
-  <ul class="main-menu clicky-menu no-js">
-    <li>
-      <a href="#">Home</a>
-    </li>
-    <li>
-      <a href="#">
-        Visalizations
-        <svg aria-hidden="true" width="16" height="16">
-          <use xlink:href="#arrow" />
-        </svg>
-      </a>
-      <ul>
-        <li><a href="#">Visualizations</a></li>
-        <li><a <a href="images/Tableau customer satisfaction.jpg">Tableau</a></li>
-        <li><a href="#">Power BI</a></li>
-        <li><a href="#">Excel</a></li>
-        <!--<li><a href="#">Training</a></li>-->
-      </ul>
-    </li>
-    <li>
-      <a href="#">
-        R Analytics
-        <svg aria-hidden="true" width="16" height="16">
-          <use xlink:href="#arrow" />
-        </svg>
-      </a>
-      <ul>
-        <li><a href="#">R Analytics</a></li>
-        <li><a href="#">Analysis</a></li>
-        <li><a href="#">Forecasting</a></li>
-        <li><a href="#">Something Else</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">
-        Python Analytics
-        <svg aria-hidden="true" width="16" height="16">
-          <use xlink:href="#arrow" />
-        </svg>
-      </a>
-      <ul>
-        <li><a href="#">Analysis</a></li>
-        <li><a href="#">Forecasting</a></li>
-        <li><a href="#">Prescription</a></li>
-      </ul>
-    </li>
-  </ul>
+<nav>
+    <a href="#">
+        <img src="image1.jpg" alt="Image 1">
+        Link 1
+        <div class="submenu">
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+    <a href="#">
+        <img src="image2.jpg" alt="Image 2">
+        Link 2
+        <div class="submenu">
+            <a href="#">Submenu 3</a>
+            <a href="#">Submenu 4</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+    <a href="#">
+        <img src="image3.jpg" alt="Image 3">
+        Link 3
+        <div class="submenu">
+            <a href="#">Submenu 5</a>
+            <a href="#">Submenu 6</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+    <a href="#">
+        <img src="image4.jpg" alt="Image 4">
+        Link 4
+        <div class="submenu">
+            <a href="#">Submenu 7</a>
+            <a href="#">Submenu 8</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
 </nav>
-
-<p class="github"><a href="https://github.com/mrwweb/clicky-menus">Now on Github</a></p>
 	     </main>		    
 	</body>
 </html>
