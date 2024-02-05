@@ -210,6 +210,69 @@
   </header>
 
 	<main>
+		
+<!-- This is the section for making the click down menue collapse -->
+<script>
+    // JavaScript to toggle the visibility of submenus on click
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuItems = document.querySelectorAll('.has-submenu');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function () {
+		event.preventDefault(); // Prevent the default anchor behavior
+                const submenu = this.querySelector('.submenu');
+                submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+    });
+</script>
+		
+  <symbol id="arrow" viewbox="0 0 16 16" >
+    <polyline points="4 6, 8 10, 12 6" stroke="#000" stroke-width="2" fill="transparent" stroke-linecap="round" />
+  </symbol>
+</svg>
+
+<nav>
+    <a href="#">
+        <img src="images/Forecast_Dash.png" alt="Tableau Visualizations">
+        Visualizations
+        <div class="submenu">
+            <a href="images/Tableau customer satisfaction.jpg" >Tableau Customer Satisfaction</a>
+            <a href="images/Forecast_Dash.png">Tablaeu Forecasting Dashboard</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+    <a href="#">
+        <img src="image2.jpg" alt="Image 2">
+        Link 2
+        <div class="submenu">
+            <a href="#">Submenu 3</a>
+            <a href="#">Submenu 4</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+    <a href="#">
+        <img src="image3.jpg" alt="Image 3">
+        Link 3
+        <div class="submenu">
+            <a href="#">Submenu 5</a>
+            <a href="#">Submenu 6</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+    <a href="#">
+        <img src="image4.jpg" alt="Image 4">
+        Link 4
+        <div class="submenu">
+            <a href="#">Submenu 7</a>
+            <a href="#">Submenu 8</a>
+            <!-- Add more submenu items as needed -->
+        </div>
+    </a>
+</nav>
+<!-- END section for making the click down menue collapse  END-->
+
+<!-- This Section Begins the Large images with hyper links section-->
  		<div class="image-container">
 			        <!-- Row 1 -->
 			<figure>
@@ -319,65 +382,7 @@
 			</figure>
 		
 		</div>
-<!-- This is the section for making the click down menue collapse -->
-<script>
-    // JavaScript to toggle the visibility of submenus on click
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuItems = document.querySelectorAll('.has-submenu');
 
-        menuItems.forEach(item => {
-            item.addEventListener('click', function () {
-		event.preventDefault(); // Prevent the default anchor behavior
-                const submenu = this.querySelector('.submenu');
-                submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
-            });
-        });
-    });
-</script>
-		
-  <symbol id="arrow" viewbox="0 0 16 16" >
-    <polyline points="4 6, 8 10, 12 6" stroke="#000" stroke-width="2" fill="transparent" stroke-linecap="round" />
-  </symbol>
-</svg>
-
-<nav>
-    <a href="#">
-        <img src="images/Forecast_Dash.png" alt="Tableau Visualizations">
-        Visualizations
-        <div class="submenu">
-            <a href="images/Tableau customer satisfaction.jpg" >Tableau Customer Satisfaction</a>
-            <a href="images/Forecast_Dash.png">Tablaeu Forecasting Dashboard</a>
-            <!-- Add more submenu items as needed -->
-        </div>
-    </a>
-    <a href="#">
-        <img src="image2.jpg" alt="Image 2">
-        Link 2
-        <div class="submenu">
-            <a href="#">Submenu 3</a>
-            <a href="#">Submenu 4</a>
-            <!-- Add more submenu items as needed -->
-        </div>
-    </a>
-    <a href="#">
-        <img src="image3.jpg" alt="Image 3">
-        Link 3
-        <div class="submenu">
-            <a href="#">Submenu 5</a>
-            <a href="#">Submenu 6</a>
-            <!-- Add more submenu items as needed -->
-        </div>
-    </a>
-    <a href="#">
-        <img src="image4.jpg" alt="Image 4">
-        Link 4
-        <div class="submenu">
-            <a href="#">Submenu 7</a>
-            <a href="#">Submenu 8</a>
-            <!-- Add more submenu items as needed -->
-        </div>
-    </a>
-</nav>
 	     </main>		    
 	</body>
 </html>
