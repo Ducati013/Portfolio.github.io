@@ -424,14 +424,7 @@
         toggleSubmenu();
       });
     });
-
-    // Add event listener to the anchor text
-      anchor.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default anchor behavior
-        toggleSubmenu();
-      });
-    });
-
+   
     // Close all submenus when clicking outside of the nav
     document.addEventListener('click', function (event) {
       if (!event.target.closest('.has-submenu')) {
