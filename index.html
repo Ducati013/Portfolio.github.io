@@ -259,7 +259,7 @@
 <nav>
 		
    <div class="has-submenu">
-        <a href="">
+        <a href="#" class="submenu-toggle">
             Visualizations
 	    <img src="images/Forecast_Dash.png" alt="Tableau Visualizations">
         </a>
@@ -273,7 +273,7 @@
         </div>
     </div>
 <div class="has-submenu">
-	<a href="#">
+	<a href="#" class="submenu-toggle">
 	    R Analytics
 	    <img src="images/4waywindowZHVI_analysis_Chi_Denver_Hou_NY.png" alt="R Analytics">
 	</a>
@@ -285,7 +285,7 @@
 	</div>
     </div>
 <div class="has-submenu">
-        <a href="#"> 
+        <a href="#" class="submenu-toggle"> 
 	     Data Mining With R
 	     <img src="images/Forecast_Dash.png" alt="Mining to gain insight into Game of Thrones, I haven't watched it yet." >
           </a>
@@ -296,7 +296,7 @@
         </div>
     </div>
 	<div class="has-submenu">
-        <a href="#">
+        <a href="#" class="submenu-toggle">
 	    Python Analytics
             <img src="R_python_test_images/pyDT.png" alt="Python Decision Tree Regression Modeling">
         </a>
@@ -309,7 +309,7 @@
     </div>
  </div>
 	<div class="has-submenu">
-        <a href="#">
+        <a href="#" class="submenu-toggle">
 	   Additional Services
             <img src="images/Sql_Practice.jpg" alt="SQL Example">
         </a>
@@ -395,8 +395,9 @@
     const menuItems = document.querySelectorAll('.has-submenu');
 
     menuItems.forEach(item => {
-      const anchor = item.querySelector('a');
-      const image = item.querySelector('img');
+	const anchor = item.querySelector('.submenu-toggle');
+      //const anchor = item.querySelector('a');
+      //const image = item.querySelector('img');
       const submenu = item.querySelector('.submenu');
 
       image.addEventListener('click', function (event) {
