@@ -415,6 +415,13 @@
       });
     });
 
+ // Also add event listener to the image
+      const image = item.querySelector('img');
+      image.addEventListener('click', function (event) {
+        anchor.click(); // Simulate click on the anchor
+      });
+    });
+
     // Close all submenus when clicking outside of the nav
     document.addEventListener('click', function (event) {
       if (!event.target.closest('.has-submenu')) {
