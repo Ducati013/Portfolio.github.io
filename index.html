@@ -395,9 +395,11 @@
     const menuItems = document.querySelectorAll('.has-submenu');
 
     menuItems.forEach(item => {
-      const anchor = item.querySelector('.submenu-toggle');
+      const anchor = item.querySelector('a.submenu-toggle');
+      const image = item.querySelector('img');
       const submenu = item.querySelector('.submenu');
 
+      // Add event listener to the anchor
       anchor.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default anchor behavior
 
@@ -412,9 +414,9 @@
         });
       });
 
-      // Also add event listener to the image
-      const image = item.querySelector('img');
+      // Add event listener to the image
       image.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default image behavior
         anchor.click(); // Simulate click on the anchor
       });
     });
@@ -429,6 +431,7 @@
     });
   });
 </script>
+
 
 <!-- END section for making the click down menue collapse  END-->
 
