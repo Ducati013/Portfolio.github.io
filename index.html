@@ -389,19 +389,17 @@
     </p>
 </div>
 <!-- End Paragraph-->
-
+<!-- This is where the code for the click listener begins -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('.has-submenu');
 
     menuItems.forEach(item => {
-	const anchor = item.querySelector('.submenu-toggle');
-      //const anchor = item.querySelector('a');
-      //const image = item.querySelector('img');
+      const anchor = item.querySelector('.submenu-toggle');
       const submenu = item.querySelector('.submenu');
 
-      image.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default image behavior
+      anchor.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default anchor behavior
 
         // Toggle the submenu display
         submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
@@ -413,9 +411,8 @@
           }
         });
       });
-    });
 
- // Also add event listener to the image
+      // Also add event listener to the image
       const image = item.querySelector('img');
       image.addEventListener('click', function (event) {
         anchor.click(); // Simulate click on the anchor
@@ -432,6 +429,7 @@
     });
   });
 </script>
+
 <!-- END section for making the click down menue collapse  END-->
 
 <!-- This Section Begins the Large images with hyper links section
