@@ -399,10 +399,8 @@
       const image = item.querySelector('img');
       const submenu = item.querySelector('.submenu');
 
-      // Add event listener to the anchor
-      anchor.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default anchor behavior
-
+      // Function to toggle submenu display
+      const toggleSubmenu = () => {
         // Toggle the submenu display
         submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
 
@@ -412,12 +410,18 @@
             otherItem.querySelector('.submenu').style.display = 'none';
           }
         });
+      };
+
+      // Add event listener to the anchor
+      anchor.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default anchor behavior
+        toggleSubmenu();
       });
 
       // Add event listener to the image
       image.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default image behavior
-        anchor.click(); // Simulate click on the anchor
+        toggleSubmenu();
       });
     });
 
