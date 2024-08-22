@@ -195,12 +195,11 @@
 
    
  /* Media query for screens up to 600px */
-   @media (min-width:100%, max-width: 100%) {
+   @media (min-width:auto, max-width: auto) 
+   {
       header {
-        width: 100%;
+        width: auto, length: auto;
 	padding: 10px;
-	
-	
       }
 
       .contact-info {
@@ -216,7 +215,7 @@
       }
      
      h2 {
-	    width: au; /* Adjust the size of the images as needed, This was just Added to adjust the header to the proper width and heigh */
+	    width: auto; /* Adjust the size of the images as needed, This was just Added to adjust the header to the proper width and heigh */
             height: auto; /* This was just Added to adjust the header to the proper width and height*/
         font-size: 24px;
       }
@@ -232,7 +231,7 @@
                 flex-direction: row; /* Revert to horizontal layout */
                 justify-content: space-between;
             }
-
+   }
 	
   </style>
 </head>
