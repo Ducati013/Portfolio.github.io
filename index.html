@@ -274,7 +274,7 @@
 	<main>
 <!-- Menu Title Begins -->
 <div class="menu-title">
-    <h2>Main Menu: select for menu</h2>
+    <h2>Main Menu: select image for menu</h2>
 </div>
 
 		
@@ -282,7 +282,7 @@
 		
    <div class="has-submenu">
         <a href="#" class="submenu-toggle">
-            Visualizations(Tableau, Power Bi,Excel)
+            <span class = "label-text"> Visualizations(Tableau, Power Bi,Excel) </span>
 	    <img src="images/Dashboard.jpg" alt="Tableau Visualizations">
         </a>
         <div class="submenu">
@@ -297,7 +297,7 @@
     </div>
 <div class="has-submenu">
 	<a href="#" class="submenu-toggle">
-	    R Analytics
+	   <span class = "label-text">  R Analytics </span>
 	    <img src="images/4waywindowZHVI_analysis_Chi_Denver_Hou_NY.png" alt="R Analytics">
 	</a>
 	<div class="submenu">
@@ -309,7 +309,7 @@
     </div>
 <div class="has-submenu">
         <a href="#" class="submenu-toggle"> 
-	     Data Mining With R
+	     <span class = "label-text"> Data Mining With R </span>
 	     <img src="images/TF-IDF insight.png" alt="Mining to gain insight into Game of Thrones, I haven't watched it yet." >
           </a>
         <div class="submenu">
@@ -320,7 +320,7 @@
     </div>
 	<div class="has-submenu">
         <a href="#" class="submenu-toggle">
-	    Python Analytics
+	    <span class = "label-text"> Python Analytics</span>
             <img src="R_python_test_images/pyDT.png" alt="Python Decision Tree Regression Modeling">
         </a>
         <div class="submenu">
@@ -333,7 +333,7 @@
  </div>
 	<div class="has-submenu">
         <a href="#" class="submenu-toggle">
-	   Additional Services/ Dashboards
+	   <span class = "label-text"> Additional Services/ Dashboards </span>
             <img src="images/Sql_Practice.jpg" alt="SQL Example">
         </a>
         <div class="submenu">
@@ -418,8 +418,10 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const menuItems = document.querySelectorAll('.has-submenu');
-
-    menuItems.forEach(item => {
+    var labelText = document.querySelector('.label-text');
+    
+  menuItems.forEach(item => {
+      var labelText = document.querySelector('.label-text');
       const anchor = item.querySelector('.submenu-toggle');
       const image = item.querySelector('img');
       const submenu = item.querySelector('.submenu');
@@ -436,20 +438,13 @@
           }
         });
       };
-
-      // Add event listener to the anchor
-     // anchor.addEventListener('click', function (event) {
-       // event.preventDefault(); // Prevent the default anchor behavior
-        //toggleSubmenu();
-      //});
-
       // Add event listener to the image
       image.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the default image behavior
         toggleSubmenu();
       });
-  
-   
+
+ 
     // Close all submenus when clicking outside of the nav
     document.addEventListener('click', function (event) {
       if (!event.target.closest('.has-submenu')) {
@@ -460,6 +455,8 @@
     });
   });
   });
+
+	
 </script>
 
 
