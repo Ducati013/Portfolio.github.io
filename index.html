@@ -195,10 +195,10 @@
 
    
  /* Media query for screens up to 600px */
-   @media (min-width:auto, max-width: auto) 
+   @media (max-width: 600px) 
    {
       header {
-        width: auto, length: auto;
+        width: 100%; 
 	padding: 10px;
       }
 
@@ -209,28 +209,35 @@
       }
 
       h1 {
-	    width: auto; /* Adjust the size of the images as needed, This was just Added to adjust the header to the proper width and heigh */
+	    width: 100%; /* Adjust the size of the images as needed, This was just Added to adjust the header to the proper width and heigh */
             height: auto; /* This was just Added to adjust the header to the proper width and height*/
         font-size: 36px;
       }
      
      h2 {
-	    width: auto; /* Adjust the size of the images as needed, This was just Added to adjust the header to the proper width and heigh */
+	    width: 100%; /* Adjust the size of the images as needed, This was just Added to adjust the header to the proper width and heigh */
             height: auto; /* This was just Added to adjust the header to the proper width and height*/
         font-size: 24px;
       }
 
       .image-container figure {
-        width: auto;
+        width: 100%;
+	height: 100%;
         
       }
 
      nav {
-	     	width: auto%; /* Adjust the size of the images as needed */
-            	height: auto; /* This was just Added to adjust the header to the proper width and height*/
-                flex-direction: row; /* Revert to horizontal layout */
-                justify-content: space-between;
-            }
+	width: 100%; /* Adjust the size of the images as needed */
+        height: auto; /* This was just Added to adjust the header to the proper width and height*/
+        flex-direction: column; /*row; /* Revert to horizontal layout */
+        justify-content: space-between;
+     }
+    
+     .image-container img 
+     {
+   	 width: 100%; /* Ensure images fit within their container */
+    	 height: auto; /* Maintain aspect ratio */
+      }
    }
 	
   </style>
