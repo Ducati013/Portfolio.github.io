@@ -66,7 +66,7 @@
     
     h1 {
       font-size: 22px; /* Adjust the font size as needed */
-      text-align: left ; /*center;*/
+      text-align: center; /*left ;*/
     }
 
    h2 {
@@ -75,6 +75,13 @@
 	   text-align: left;
    }
 
+   .header-content  /* This is the title over the page, and centers the text at the top of the page */
+   {
+  	display: flex;
+  	justify-content: space-between;
+  	align-items: center;
+   }
+	  
    .header-titles {
       display: flex;
       flex-direction: column;
@@ -201,14 +208,22 @@
         width: 100%; 
 	padding: 0px;
       }
-      .header-logo {
+     
+      .header-content 
+      {
+    	flex-direction: row; /* Keep the row layout */
+    	align-items: center;
+      }
+      
+      .header-logo  
+      {
     	width: 20%; /* Adjust width for smaller screens */
     	max-width: 175px; /* Optional: Limit maximum width */
     	height: 175px; /* Maintain aspect ratio */
 	/*max-height: 50vh;  */
 	object-fit: contain;
     	margin: 5px; /* Adjust margins for spacing */
-  	}
+       }
 
       .contact-info {
         text-align: left/*center*/;
@@ -266,11 +281,11 @@
   <header>
      <!-- Another Page button on the left side
     <a href="images/Dashboards_Dynamic.jpg" class="custom-button">Projects</a> -->
-    
+    <h1>Welcome to Kevin Foley's Portfolio</h1>	  
+    	<div class="header-content">
     <img src="images/Resume Picture.jpg" alt="This is me" class="header-logo"> <!-- Replace with your actual logo image -->
 	<div class="header-titles">
-	<h1>Welcome to Kevin Foley's Portfolio</h1>
- 	<h2>Data Analytics & Data Science Solutions. </h2>
+	<h2>Data Analytics & Data Science Solutions. </h2>
 	</div> 
     <div class="contact-info" style="color: black; font-family: Didactic">
       <p>Contact Info:</p>
